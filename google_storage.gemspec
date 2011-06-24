@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Lucas Hills"]
   s.email       = ["lucas@lucashills.com"]
   s.homepage    = "https://github.com/2potatocakes/google_storage"
-  s.summary     = %q{A Ruby client library for integrating with the new Google Storage API v2 using OAuth2.0}
-  s.description = %q{Google Storage for Developers is a RESTful service for storing and accessing your data on Google's infrastructure}
+  s.summary     = %q{Google Storage for Developers is a RESTful service for storing and accessing your data on Google's infrastructure}
+  s.description = %q{A Ruby client library for using the new Google Storage API v2 using OAuth2.0}
   s.files       = `git ls-files`.split("\n")
   s.require_paths = ["lib"]
 
