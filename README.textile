@@ -107,3 +107,4 @@ web_applications:
 #    Google Storage API
 </pre>
 
+Once you've acquired your refresh_token you can now make calls to the API. Refer to the examples dir on how to use.

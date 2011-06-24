@@ -71,11 +71,11 @@ module GoogleStorage
 
       def params_to_data_string(params)
         return "" if params.empty?
-        escaped_params = params.collect do |p|
+        esc_params = params.collect do |p|
           encoded = (CGI::escape(p[0].to_s) + "=" + CGI::escape(p[1].to_s))
           encoded.gsub('+', '%20')
         end
-        "#{escaped_params.join('&')}"
+        "#{esc_params.join('&')}"
       end
   end
 end
