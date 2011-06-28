@@ -3,5 +3,8 @@
 Gemfile.lock
 pkg/*
 .idea
+.yardoc
+.yardoc/*
+
 
 

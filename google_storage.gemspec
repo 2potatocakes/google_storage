@@ -1,4 +1,5 @@
 $:.push File.expand_path("../lib", __FILE__)
+
 require "google_storage/version"
 
 Gem::Specification.new do |s|

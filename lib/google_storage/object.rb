@@ -4,9 +4,25 @@ require 'digest/md5'
 module GoogleStorage
   class Client
 
-    def get_object(bucket, filename, options={})
+    ###
+    #
+    # <b>Returns a Google Storage Object inside of a Hash</b>
+    #
+    # Google Ref: http://code.google.com/apis/storage/docs/reference-methods.html#getobject
+    #
+    # Example:
+    #
+    #   Returns a Hash containing your object
+    #     client.get_object('bucket_name', 'example_image.jpg')
+    #
+    #   Or write the file directly to your file system
+    #     client.get_object('bucket_name', 'example_image.jpg', :write_to_file => 'C:/example/file.jpg')
+    #
+    ###
+
+    def get_object(bucket_name, filename, options={})
       filename.gsub!(/^\//, "")
-      resp = get(bucket, "/#{filename}", options)
+      resp = get(bucket_name, "/#{filename}", options)
       return Crack::XML.parse(resp.body) unless resp.code == "200"
       resp_obj = {}
       if options[:write_to_file]
@@ -30,7 +46,32 @@ module GoogleStorage
       return resp_obj
     end
 
-    def put_object(bucket, filename, options={})
+    ###
+    #
+    # <b>Uploads an Object to Google Storage, or updates if using the same filename</b>
+    #
+    # If no :x_goog_acl option is supplied, a 'private' ACL is applied by default
+    #
+    # Google Ref: http://code.google.com/apis/storage/docs/reference-methods.html#putobject
+    #
+    # *Note:* If no content type is specified then Google defaults to using 'binary/octet-stream'
+    #
+    # Example:
+    #
+    #   client.put_object('bucket_name', 'file.jpg', :path_to_file => 'C:/example/file.jpg')
+    #   client.put_object('bucket_name', 'file.jpg', :data => File.read('C:/example/file.jpg'))
+    #
+    # Available Options:
+    #
+    #   :x_goog_acl => 'public-read'
+    #   :content_type => 'image/jpeg'     <-- It's recommended to always include the content type
+    #   :path_to_file => 'path_to_file_you_want_to_upload'
+    #   :data => [binary_data]
+    #
+    #
+    ###
+
+    def put_object(bucket_name, filename, options={})
       filename.gsub!(/^\//, "")
       if options[:path_to_file]
         begin
@@ -46,23 +87,37 @@ module GoogleStorage
         end
         options[:data] = @data
       end
-      resp = put(bucket, "/#{filename}", options)
+      resp = put(bucket_name, "/#{filename}", options)
       public_file = (options[:x_goog_acl] && options[:x_goog_acl].match(/public/))
       return Crack::XML.parse(resp.body) unless resp.code == "200"
       resp_obj = {}
       resp_obj[:success]      = true
       resp_obj[:message]      = "Object added successfully"
       resp_obj[:filename]     = filename
-      resp_obj[:content_type] = options[:content_type]
-      resp_obj[:url]          = public_file ? "http://#{@host}/#{bucket}/#{filename}" : \
-                                              "https://sandbox.google.com/storage/#{bucket}/#{filename}"
+      resp_obj[:content_type] = options[:content_type] ? options[:content_type] : 'binary/octet-stream'
+      resp_obj[:url]          = public_file ? "http://#{@host}/#{bucket_name}/#{filename}" : \
+                                              "https://sandbox.google.com/storage/#{bucket_name}/#{filename}"
       resp_obj[:url_type]     = public_file ? "public" : "private"
       return resp_obj
     end
 
-    def list_acls_for_object(bucket, filename, options={})
+    alias :upload_object :put_object
+
+    ###
+    #
+    # <b>Lists the ACL that has been applied to a particular object</b>
+    #
+    # Google Ref: http://code.google.com/apis/storage/docs/reference-methods.html#getobject
+    #
+    # Example:
+    #
+    #   client.object_acls('bucket_name', 'file.jpg')
+    #
+    ###
+
+    def object_acls(bucket_name, filename, options={})
       filename.gsub!(/^\//, "")
-      resp = get(bucket, "/#{filename}?acl", options)
+      resp = get(bucket_name, "/#{filename}?acl", options)
       resp_obj = Crack::XML.parse(resp.body)
       if resp_obj["AccessControlList"]
         resp_obj[:success] = true
@@ -74,11 +129,21 @@ module GoogleStorage
       return resp_obj
     end
 
-    alias :object_acls :list_acls_for_object
+    ###
+    #
+    # <b>Returns the metadata of an Object stored</b>
+    #
+    # Google Ref: http://code.google.com/apis/storage/docs/reference-methods.html#headobject
+    #
+    # Example:
+    #
+    #   client.object_head('bucket_name', 'file.jpg')
+    #
+    ###
 
-    def head_object(bucket, filename, options={})
+    def object_head(bucket_name, filename, options={})
       filename.gsub!(/^\//, "")
-      resp = head(bucket, "/#{filename}", options)
+      resp = head(bucket_name, "/#{filename}", options)
       return resp.header unless resp.code == "200"
       resp_obj = {}
       resp_obj[:success]          = true
@@ -92,11 +157,21 @@ module GoogleStorage
       return resp_obj
     end
 
-    alias :object_head :head_object
+    ###
+    #
+    # <b>Deletes an Object from your bucket</b>
+    #
+    # Google Ref: http://code.google.com/apis/storage/docs/reference-methods.html#deleteobject
+    #
+    # Example:
+    #
+    #   client.delete_object('bucket_name', 'file.jpg')
+    #
+    ###
 
-    def delete_object(bucket, filename, options={})
+    def delete_object(bucket_name, filename, options={})
       filename.gsub!(/^\//, "")
-      resp = delete(bucket, "/#{filename}", options)
+      resp = delete(bucket_name, "/#{filename}", options)
       return Crack::XML.parse(resp.body) unless resp.code == "204"
       resp_obj = {}
       resp_obj[:success]          = true
