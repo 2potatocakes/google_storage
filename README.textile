@@ -45,7 +45,7 @@ But it's also possible to run this gem from the command line if you want.
 h2. Install the google_storage Gem
 
 Include the google_storage gem in your Gemfile and install config files
-<pre>gem "google_storage"
+<pre>gem 'google_storage'
 bundle install
 </pre>
 Then in your Rails application directory run:
@@ -137,7 +137,7 @@ h2. Examples
 
 h3. Configuration
 
-   <pre>require "google_storage"</pre>
+   <pre>require 'google_storage'</pre>
 
    The following will look for google_storage.yml in your rails config directory
      <pre>client = GoogleStorage::Client.new</pre>
@@ -157,8 +157,8 @@ h3. Bucket Requests
      <pre>client.bucket_acls('bucket_name')</pre>
 
    PUT Bucket
-     <pre>client.create_bucket('bucket_name')                                <-- private bucket
-     client.create_bucket('bucket_name', :x_goog_acl => 'public-read')  <-- public bucket  </pre>
+     <pre>client.create_bucket('bucket_name')                               # < private bucket
+     client.create_bucket('bucket_name', :x_goog_acl => 'public-read')  # < public bucket  </pre>
 
    GET Bucket
      <pre>client.get_bucket('bucket_name')</pre>
