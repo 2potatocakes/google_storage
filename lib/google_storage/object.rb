@@ -29,7 +29,7 @@ module GoogleStorage
         begin
           File.open(options[:write_to_file], 'wb') {|f| f.write(resp.body) }
         rescue Exception => msg
-          return {:error => msg}
+          return {"Error" => msg}
         end
         resp_obj.clear
         resp_obj[:success]      = true
@@ -44,6 +44,9 @@ module GoogleStorage
       resp_obj[:size]     = resp.header["content-length"]
 
       return resp_obj
+
+
+
     end
 
     ###
@@ -83,7 +86,7 @@ module GoogleStorage
             @data = uploaded_file.read
           end
         rescue Exception => msg
-          return {:error => msg}
+          return {"Error" => msg}
         end
         options[:data] = @data
       end

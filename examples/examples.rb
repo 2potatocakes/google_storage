@@ -6,7 +6,7 @@
 #     client = GoogleStorage::Client.new
 #
 #   Otherwise you can pass in the path to the google_storage.yml
-#     client = GoogleStorage::Client.new(:config_yml => 'C:/example_path/config/google_storage.yml')
+#     client = GoogleStorage::Client.new(:config_yml => 'C:/github/highvoltage/config/google_storage.yml')
 #
 ### Service Requests ###
 #

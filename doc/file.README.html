@@ -55,12 +55,33 @@
     <iframe id="search_frame"></iframe>
     
     <div id="content"><div id='filecontents'><h1>Google Storage using <span class="caps">API</span> v2</h1>
-<p>I wrote this gem because the only google storage gems I could find already written were either written a while ago and only set up to use the old
+<p>I wrote this gem because the only google storage gems I could find already written were either written a while ago and only set up to use the original
 version of Google&#8217;s <span class="caps">API</span> or they were dependent on Gems that don&#8217;t run properly on&#8230; dare I say it&#8230; windows.. :)  Apologies, I&#8217;m without choice
 at the moment, but anyways, this gem should run fine on all platforms and I&#8217;ve tried to keep dependencies to a minimum. Let me know if you find
 any bugs though ok and feel free to contribute.</p>
-<p>Google Storage is still a little experimental at the moment and the responses back from google differ quite a bit from each other.
-I&#8217;ve tried to parse all of these different responses and turn them into a fairly common type of response object though.</p>
+<h2>Response Object</h2>
+<p>A lot of the responses from GS on the backend are a little bit inconsistent, sometimes returning response codes, sometimes returning heavily
+nested xml data and sometimes just returning information in the response header. I&#8217;ve tried to parse all responses that are returned from GS into a fairly
+consistent type of response Hash object. Usually this is in the form of something like this:</p>
+<pre class="code">
+#successful responses will always include a :success =&gt; true key/value pair
+
+client.list_buckets
+=&gt; {:success=&gt;true,
+        :buckets=&gt;[ {&quot;Name&quot;=&gt;&quot;bucket_1_example&quot;, &quot;CreationDate&quot;=&gt;&quot;2011-06-07T07:11:18.480Z&quot;},
+                    {&quot;Name&quot;=&gt;&quot;bucket_2_example&quot;, &quot;CreationDate&quot;=&gt;&quot;2011-05-31T10:58:08.097Z&quot;},
+                    {&quot;Name&quot;=&gt;&quot;bucket_3_example&quot;, &quot;CreationDate&quot;=&gt;&quot;2011-06-06T22:47:10.728Z&quot;}],
+        :raw=&gt;{ THIS :raw FIELD WILL RETURN A HASH OF THE UNPARSED RESPONSE IN CASE YOU NEED IT }
+    }
+
+#Unsuccessful responses will return an &quot;Error&quot; Hash
+
+client.get_bucket(&quot;bucket_4_example&quot;)
+=&gt; {&quot;Error&quot;=&gt;{
+        &quot;Code&quot;=&gt;&quot;NoSuchBucket&quot;,
+        &quot;Message&quot;=&gt;&quot;The specified bucket does not exist.&quot;
+    }}
+</pre>
 <h2>Setup Guide</h2>
 <p>There&#8217;s a couple of steps to follow in order to setup this gem. The new Google Storage APIv2 uses OAuth 2.0 to authenticate requests, you can read up
 more on the nitty gritty if you like here: <a href="http://code.google.com/apis/accounts/docs/OAuth2.html">Google&#8217;s OAuth2 Guide</a></p>
@@ -141,10 +162,47 @@ web_applications:
 # 7. Copy and paste the refresh_token into this file. Your application should now be able to make calls to your
 #    Google Storage API
 </pre>
-<p>Once you&#8217;ve acquired your refresh_token you can now make calls to the <span class="caps">API</span>. Refer to the examples dir on how to use.</p></div></div>
+<p>Once you&#8217;ve acquired your refresh_token you can now make calls to the <span class="caps">API</span>.</p>
+<h2>Examples</h2>
+<h3>Configuration</h3>
+<pre class="code"><span class='id require'>require</span> <span class='id “google_storage”'>“google_storage”</span></pre>
+The following will look for google_storage.yml in your rails config directory
+<pre class="code"><span class='id client'>client</span> <span class='op'>=</span> <span class='const'>GoogleStorage</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id new'>new</span></pre>
+Otherwise you can pass in the path to the google_storage.yml
+<pre class="code">client = GoogleStorage::Client.new(:config_yml =&gt; ‘C:/github/highvoltage/config/google_storage.yml’)
+</pre>
+<h3>Service Requests</h3>
+<span class="caps">GET</span> Service
+<pre class="code"><span class='id client'>client</span><span class='period'>.</span><span class='id list_buckets'>list_buckets</span></pre>
+<h3>Bucket Requests</h3>
+<span class="caps">GET</span> Access Control List for Bucket
+<pre class="code"><span class='id client'>client</span><span class='period'>.</span><span class='id bucket_acls'>bucket_acls</span><span class='lparen'>(</span><span class='id ‘bucket_name’'>‘bucket_name’</span><span class='rparen'>)</span></pre>
+<span class="caps">PUT</span> Bucket
+<pre class="code">client.create_bucket(‘bucket_name’)                                &lt;— private bucket
+client.create_bucket(‘bucket_name’, :x_goog_acl =&gt; ‘public-read’)  &lt;— public bucket  </pre>
+<span class="caps">GET</span> Bucket
+<pre class="code"><span class='id client'>client</span><span class='period'>.</span><span class='id get_bucket'>get_bucket</span><span class='lparen'>(</span><span class='id ‘bucket_name’'>‘bucket_name’</span><span class='rparen'>)</span></pre>
+<span class="caps">DELETE</span> Bucket
+<pre class="code"><span class='id client'>client</span><span class='period'>.</span><span class='id delete_bucket'>delete_bucket</span><span class='lparen'>(</span><span class='id ‘bucket_name’'>‘bucket_name’</span><span class='rparen'>)</span></pre>
+<h3>Object Requests</h3>
+<span class="caps">GET</span> Access Control List for Object
+<pre class="code"><span class='id client'>client</span><span class='period'>.</span><span class='id object_acls'>object_acls</span><span class='lparen'>(</span><span class='id ‘bucket_name’'>‘bucket_name’</span><span class='comma'>,</span> <span class='id ‘filename'>‘filename</span><span class='period'>.</span><span class='id jpg’'>jpg’</span><span class='rparen'>)</span></pre>
+<span class="caps">GET</span> Object
+<pre class="code">client.get_object(‘bucket_name’, ‘filename.jpg’)
+client.get_object(‘bucket_name’, ‘filename.jpg’, :write_to_file =&gt; ‘c:/temp/new_file_name.jpg’)</pre>
+<span class="caps">POST</span> Object
+<pre class="code">Sorry, not including a ‘post’ object method as it still requires use of the old legacy access,
+Please use the ‘put’ object method below instead to upload files to a bucket.</pre>
+<span class="caps">PUT</span> Object
+<pre class="code">client.put_object(‘bucket_name’, ‘filename.jpg’, :data =&gt; File.read(‘c:/temp/file.jpg’), :x_goog_acl =&gt; ‘public-read’)
+client.upload_object(‘bucket_name’, ‘filename.jpg’, :path_to_file =&gt; ‘c:/temp/file.jpg’)</pre>
+<span class="caps">HEAD</span> Object
+<pre class="code"><span class='id client'>client</span><span class='period'>.</span><span class='id object_head'>object_head</span><span class='lparen'>(</span><span class='id ‘bucket_name’'>‘bucket_name’</span><span class='comma'>,</span> <span class='id ‘filename'>‘filename</span><span class='period'>.</span><span class='id jpg’'>jpg’</span><span class='rparen'>)</span></pre>
+<span class="caps">DELETE</span> Object
+<pre class="code"><span class='id client'>client</span><span class='period'>.</span><span class='id delete_object'>delete_object</span><span class='lparen'>(</span><span class='id ‘bucket_name’'>‘bucket_name’</span><span class='comma'>,</span> <span class='id ‘filename'>‘filename</span><span class='period'>.</span><span class='id jpg’'>jpg’</span><span class='rparen'>)</span></pre></div></div>
     
     <div id="footer">
-  Generated on Tue Jun 28 10:28:04 2011 by 
+  Generated on Fri Jul  1 12:07:25 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>
