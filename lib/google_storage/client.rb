@@ -82,7 +82,7 @@ Example: GoogleStorage::Client.new(:config_yml => 'path to your google storage y
 
       @client_id      = config_yml['web_applications']['client_id']
       @client_secret  = config_yml['web_applications']['client_secret']
-      @client_secret.force_encoding("UTF-8")
+      @client_secret.force_encoding("UTF-8") if @client_secret.respond_to?(:force_encoding)
       @refresh_token  = config_yml['refresh_token'] if config_yml['refresh_token']
 
       #TODO Add support for individual permission types
