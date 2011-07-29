@@ -157,7 +157,7 @@ h3. Bucket Requests
      <pre>client.bucket_acls('bucket_name')</pre>
 
    PUT Bucket
-     <pre>client.create_bucket('bucket_name')                               # < private bucket
+     <pre>client.create_bucket('bucket_name')                                # < private bucket
      client.create_bucket('bucket_name', :x_goog_acl => 'public-read')  # < public bucket  </pre>
 
    GET Bucket
