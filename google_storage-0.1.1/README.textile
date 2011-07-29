@@ -1,0 +1,110 @@
+h1. Google Storage using API v2
+
+I wrote this gem because the only google storage gems I could find already written were either written a while ago and only set up to use the old
+version of Google's API or they were dependent on Gems that don't run properly on... dare I say it... windows.. :)  Apologies, I'm without choice
+at the moment, but anyways, this gem should run fine on all platforms and I've tried to keep dependencies to a minimum. Let me know if you find
+any bugs though ok and feel free to contribute.
+
+Google Storage is still a little experimental at the moment and the responses back from google differ quite a bit from each other.
+I've tried to parse all of these different responses and turn them into a fairly common type of response object though.
+
+h2. Setup Guide
+
+There's a couple of steps to follow in order to setup this gem. The new Google Storage APIv2 uses OAuth 2.0 to authenticate requests, you can read up
+more on the nitty gritty if you like here: "Google's OAuth2 Guide":http://code.google.com/apis/accounts/docs/OAuth2.html
+
+I'll try and add client side support also once this gem is up and running properly, but for the moment it's only setup to support server side web
+applications.
+
+But it's also possible to run this gem from the command line if you want.
+
+
+h2. Install the google_storage Gem
+
+Include the google_storage gem in your Gemfile and install config files
+<pre>gem "google_storage"
+bundle install
+</pre>
+Then in your Rails application directory run:
+<pre>rails generate google_storage:install
+</pre>
+This will generate some rake tasks a google_storage.yml file in your config directory.
+<pre>/Application/config/google_storage.yml
+/Application/lib/tasks/google_storage.task
+</pre>
+
+
+
+h2. Setup your Google Project Client ID's
+
+Visit "Google Storage":http://code.google.com/apis/storage/ and select activate Google Storage.
+If you haven't already got a project set up, it'll prompt you to create one.
+
+When you have access to your Google APIs Console, you need to enable Google Storage. When you select enable, you'll be shown terms and conditions
+and you'll then need to setup billing. They have full pricing details there for you to check out as well but I think it's pretty reasonable..
+
+Create a client ID for your project
+On the left menu select "API Access" and then "Create an OAuth 2.0 client ID"
+Enter your project's name and brand information.
+
+Select Application type = Web Application and enter your site's information. If you're using localhost and running
+locally make sure you include the port number you're using as well.
+
+
+h2. Enter your Client ID details into your google_storage.yml
+
+This is the example google_storage.yml file that is copied into your config directory of your rails application.
+
+Follow the steps to obtain a refresh token from google.
+
+<pre>
+#Replace the following example ids with your own
+
+google_config:
+  x-goog-project-id: 825628431245
+
+#Client ID for web applications
+web_applications:
+  client_id: 825628431245.apps.googleusercontent.com
+  client_secret: lpNYX5SPFDB6N-40lyMIPlQn
+  redirect_uris: 'http://localhost:3000/example'
+  js_origins: 'http://localhost:3000'
+
+#refresh_token: replace this line with a refresh token from google, read below on how to get one
+
+#You need to acquire a refresh token from google so that the google_storage gem
+#can acquire access tokens whenever it needs to make new requests
+
+# 1. Make sure you've signed up for Google Storage and filled in the above client ID details
+#    for your web application first
+#
+# 2. Depending on how much access you want to grant to your application run
+#    ONE of the following from your applications root directory. If you intend to be able to create and
+#    destroy objects and buckets and also be able to set permissions then use full_control
+#
+#           rake gs:grant:read_only
+#           rake gs:grant:read_write
+#           rake gs:grant:full_control
+#
+# 3. Step 2 will generate a URL for you. Copy and paste the URL into a browser and you should be prompted
+#    by google to authorize the request by logging into your browser using the google email account you setup
+#    your google storage account with
+#
+# 4. When you 'allow access' you'll be redirected back to the redirect URL you setup in your client ID
+#    Your redirect URL should now include an authorization code. It'll look something like this:
+#    http://localhost:3000/example?code=4/WvlklnjtybhRJpaKpmDYrzIhAzyx
+#
+# 5. Copy that code from your URL and run the following rake task from your application directory
+#
+#           rake gs:refresh_token['paste_your_auth_code_here']
+#  Example: rake gs:refresh_token['4/WvlklnjtybhRJpaKpmDYrzIhAzyx']
+#
+# 6. If everything worked you should see something that looks like the following:
+#
+#           refresh_token: 1/x4X-U57snRMkLIWWYHWLCXPbfcnyGsdfx04sWAiG_1k
+#
+# 7. Copy and paste the refresh_token into this file. Your application should now be able to make calls to your
+#    Google Storage API
+</pre>
+
+Once you've acquired your refresh_token you can now make calls to the API. Refer to the examples dir on how to use.
