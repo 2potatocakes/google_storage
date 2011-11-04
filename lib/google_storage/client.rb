@@ -100,6 +100,8 @@ Example: GoogleStorage::Client.new(:config_yml => 'path to your google storage y
       @debug          = options[:debug]
       @timeout        = options[:timeout]
       @host           = options[:host] ? options[:host] : 'commondatastorage.googleapis.com'
+
+      @access_token = self.refresh_access_token(@refresh_token)["access_token"]
     end
 
 
@@ -161,4 +163,3 @@ Example: GoogleStorage::Client.new(:config_yml => 'path to your google storage y
       
   end
 end
-   
