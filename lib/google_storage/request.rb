@@ -22,7 +22,7 @@ module GoogleStorage
       headers["Content-Length"]     = (options[:data] ? options[:data].size : 0).to_s
       headers["x-goog-api-version"] = @api_version
       headers["x-goog-project-id"]  = @project_id if options[:send_goog_project_id]
-      headers["Authorization"]      = 'OAuth ' + self.refresh_access_token(@refresh_token)["access_token"]
+      headers["Authorization"]      = 'OAuth ' + @access_token
       param_string                  = params.empty? ? '' : '?' + params_to_data_string(params)
       headers["Range"]              = options[:range] if options[:range]
       headers["If-Match"]           = options[:filename] if options[:filename]
@@ -31,9 +31,15 @@ module GoogleStorage
       headers["If-Unmodified-Since"]= options[:if_modified_since] if options[:if_modified_since]
       headers["Content-MD5"]        = options[:md5] if options[:md5]
       headers["x-goog-acl"]         = options[:x_goog_acl] if options[:x_goog_acl]
-      headers["Transfer-Encoding"]  = options[:transfer_encoding] if options[:transfer_encoding]
 
-      _http_request(host, path, method, headers, param_string, options[:data])
+      request = _http_request(host, path, method, headers, param_string, options[:data])
+      if request.class == Net::HTTPUnauthorized
+        warn "Token expired, will attempt to get a new one" if @debug
+        @access_token = self.refresh_access_token(@refresh_token)["access_token"]
+        headers["Authorization"]      = 'OAuth ' + @access_token
+        request = _http_request(host, path, method, headers, param_string, options[:data])
+      end
+      request
     end
 
     private
