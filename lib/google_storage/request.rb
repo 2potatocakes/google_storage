@@ -31,6 +31,7 @@ module GoogleStorage
       headers["If-Unmodified-Since"]= options[:if_modified_since] if options[:if_modified_since]
       headers["Content-MD5"]        = options[:md5] if options[:md5]
       headers["x-goog-acl"]         = options[:x_goog_acl] if options[:x_goog_acl]
+      headers["Transfer-Encoding"]  = options[:transfer_encoding] if options[:transfer_encoding]
 
       request = _http_request(host, path, method, headers, param_string, options[:data])
       if request.class == Net::HTTPUnauthorized
