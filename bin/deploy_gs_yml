@@ -19,10 +19,15 @@ class GSYml
 
   def self.deploy
     gs_yml = File.expand_path(File.join(Dir.pwd, "google_storage.yml"))
-    FileUtils.cp File.expand_path("../lib/generators/templates/google_storage.yml", File.dirname(__FILE__)),
-                 gs_yml
+    if File.exists?(gs_yml)
+      puts "google_storage.yml already exists in this directory"
+    else
+      FileUtils.cp File.expand_path("../lib/generators/templates/google_storage.yml", File.dirname(__FILE__)),
+                   gs_yml
 
-    puts "Successfully generated: #{gs_yml}"
+      puts "Successfully generated: #{gs_yml}"
+    end
+
   end
 
 end

@@ -1,47 +1,18 @@
 h1. Google Storage using API v2
 
-I wrote this gem because the only google storage gems I could find already written were either written a while ago and only set up to
-use the original version of Google's API or they were dependent on Gems that don't run properly on... dare I say it... windows.. :)
-Apologies, I'm without choice at the moment, but anyways, this gem should run fine on all platforms and I've tried to keep
-dependencies to a minimum. Let me know if you find any bugs though ok and feel free to contribute.
-
-h2. Response Object
-
-A lot of the responses from GS on the backend are a little bit inconsistent, sometimes returning response codes, sometimes returning
-heavily nested xml data and sometimes just returning information in the response header. I've tried to parse all responses that are
-returned from GS into a fairly consistent type of response Hash object.
-Usually this is in the form of something like this:
-
-<pre>
-#successful responses will always include a :success => true key/value pair
-
-client.list_buckets
-=> {:success=>true,
-        :buckets=>[ {"Name"=>"bucket_1_example", "CreationDate"=>"2011-06-07T07:11:18.480Z"},
-                    {"Name"=>"bucket_2_example", "CreationDate"=>"2011-05-31T10:58:08.097Z"},
-                    {"Name"=>"bucket_3_example", "CreationDate"=>"2011-06-06T22:47:10.728Z"}],
-        :raw=>{ THIS :raw FIELD WILL RETURN A HASH OF THE UNPARSED RESPONSE IN CASE YOU NEED IT }
-    }
-
-#Unsuccessful responses will return an "Error" Hash
-
-client.get_bucket("bucket_4_example")
-=> {"Error"=>{
-        "Code"=>"NoSuchBucket",
-        "Message"=>"The specified bucket does not exist."
-    }}
-</pre>
+I wrote this gem to work with the newer v2 of the Google Storage API. It will run fine on all platforms and has been tested to work
+with ruby 1.8.7 and above. Let me know if you find any bugs though and feel free to make contributions.
 
 h2. Setup Guide
 
 There's a couple of steps to follow in order to setup this gem. The new Google Storage APIv2 uses OAuth 2.0 to authenticate requests,
-you can read up more on the nitty gritty if you like here:
+you can read up more on the nitty gritty if you like, here:
 "Google's OAuth2 Guide":http://code.google.com/apis/accounts/docs/OAuth2.html
 
 I'll try and add client side support also once this gem is up and running properly, but for the moment it's only setup to support
-server side web applications.
+server side applications.
 
-But it's also possible to run this gem from the command line if you want.
+But it's also possible to run this gem from the command line, or through a plain ruby script if you want.
 
 
 h3. Rails setup
@@ -54,20 +25,48 @@ bundle install
 cd /rails_app
 rails generate google_storage:install
 
-#This will generate some rake tasks a google_storage.yml file in your config directory.
+#This will generate some rake tasks and a google_storage.yml file in your config directory.
 /rails_app/config/google_storage.yml
 /rails_app/lib/tasks/google_storage.task
+
+#Before running any of the rake tasks, update the google_storage.yml file with your own Google Storage login details and
+#read the commented out code in the google_storage.yml on how to use the rake tasks to acquire a refresh token from google
 </pre>
 
 h3. Ruby setup
 
-<pre>#Install the gem and copy the google_storage.yml file from github or else run 'deploy_gs_yml'
-#to generate a google_storage.yml file
+<pre>#Install the google_storage gem first
 
 gem install google_storage
 
+#From the command line run: 'deploy_gs_yml' to generate a google_storage.yml file
+
 cd /tmp
 deploy_gs_yml
+
+#This will generate a template file: /tmp/google_storage.yml
+
+#Open the template google_storage.yml file and enter your own google credentials
+#Then run IRB and type the following:
+
+require 'google_storage'
+client = GoogleStorage::Client.new(:config_yml => '/tmp/google_storage.yml')
+
+#The authorization_url takes 1 of 3 arguments depending on how much access you want (:read_only, :read_write or :full_control)
+puts client.authorization_url(:full_control)
+
+#This will output a really long URL, copy and paste this URL into a browser and you'll be prompted by Google to allow access
+#to your google storage account.
+#Accept this request and your browser will redirect to a "PAGE NOT FOUND" error most likely. This is fine.
+#In your browsers URL now though, you should see something like this:
+
+http://localhost:3000/oauth2callback?code=4/oSdp5JUOiTVcq9p6SW6rjAndreyG.wngsnANBsI4RgrKXntQAax1m82kodAI
+
+#Copy the code from this URL into your google_storage.yml file and save it.
+
+refresh_token: 4/oSdp5JUOiTVcq9p6SW6rjAndreyG.wngsnANBsI4RgrKXntQAax1m82kodAI
+
+#You should now be setup and able to perform the commands in the 'Examples' section below.
 
 </pre>
 
@@ -146,6 +145,34 @@ web_applications:
 </pre>
 
 Once you've acquired your refresh_token you can now make calls to the API.
+
+
+h2. Response Object
+
+A lot of the responses from GS on the backend are a little bit inconsistent, sometimes returning response codes, sometimes returning
+heavily nested xml data and sometimes just returning information in the response header. I've tried to parse all responses that are
+returned from GS into a fairly consistent type of response Hash object.
+Usually this is in the form of something like this:
+
+<pre>
+#successful responses will always include a :success => true key/value pair
+
+client.list_buckets
+=> {:success=>true,
+        :buckets=>[ {"Name"=>"bucket_1_example", "CreationDate"=>"2011-06-07T07:11:18.480Z"},
+                    {"Name"=>"bucket_2_example", "CreationDate"=>"2011-05-31T10:58:08.097Z"},
+                    {"Name"=>"bucket_3_example", "CreationDate"=>"2011-06-06T22:47:10.728Z"}],
+        :raw=>{ THIS :raw FIELD WILL RETURN A HASH OF THE UNPARSED RESPONSE IN CASE YOU NEED IT }
+    }
+
+#Unsuccessful responses will return an "Error" Hash
+
+client.get_bucket("bucket_4_example")
+=> {"Error"=>{
+        "Code"=>"NoSuchBucket",
+        "Message"=>"The specified bucket does not exist."
+    }}
+</pre>
 
 
 h2. Examples
