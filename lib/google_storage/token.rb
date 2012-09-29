@@ -12,7 +12,7 @@ module GoogleStorage
         else
           'https://www.google.com/m8/feeds/'
       end
-      "https://accounts.google.com/o/oauth2/auth?client_id=#{@client_id}&redirect_uri=#{@redirect_uri}&scope=#{scope_url}&response_type=code"
+      "https://accounts.google.com/o/oauth2/auth?client_id=#{@client_id}&redirect_uri=#{@redirect_uri}&scope=#{scope_url}&response_type=code&access_type=offline"
     end
 
     def acquire_refresh_token(token, options={})
