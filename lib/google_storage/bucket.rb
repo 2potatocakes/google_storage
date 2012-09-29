@@ -17,7 +17,7 @@ module GoogleStorage
       resp_obj = Crack::XML.parse(resp.body)
       if resp_obj["ListAllMyBucketsResult"]
         resp_obj[:success] = true
-        resp_obj[:buckets] = resp_obj["ListAllMyBucketsResult"]["Buckets"]["Bucket"]
+        resp_obj[:buckets] = resp_obj["ListAllMyBucketsResult"]["Buckets"].nil? ? [] : resp_obj["ListAllMyBucketsResult"]["Buckets"]["Bucket"]
         resp_obj[:raw] = Crack::XML.parse(resp.body)
         resp_obj.each_key {|key| resp_obj.delete(key) unless key == :success || key == :buckets || key == :raw }
       end
