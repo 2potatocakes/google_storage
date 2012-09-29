@@ -12,7 +12,8 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/2potatocakes/google_storage'
   s.summary     = 'Google Storage for Developers is a RESTful service for storing and accessing your data on Google\'s infrastructure'
   s.description = 'A Ruby client library for using the new Google Storage API v2 using OAuth2.0'
-  s.files       = `git ls-files`.split("\n")
+  s.files       = %w(Rakefile README.textile google_storage.gemspec) + Dir.glob("{bin,lib}/**/*")
+  s.executables = %w(deploy_gs_yml)
   s.require_paths = ['lib']
 
   s.add_dependency('crack')

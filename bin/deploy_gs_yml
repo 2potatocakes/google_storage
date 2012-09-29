@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+##
+#   Title: google_storage
+#   Contact: https://github.com/2potatocakes/google_storage
+##
+
+require 'fileutils'
+
+##
+# The following script will generate a google_storage.yml template file in the directory
+# where the script is executed from
+#
+# Usage: deploy_gs_yml
+#
+##
+
+class GSYml
+
+  def self.deploy
+    gs_yml = File.expand_path(File.join(Dir.pwd, "google_storage.yml"))
+    FileUtils.cp File.expand_path("../lib/generators/templates/google_storage.yml", File.dirname(__FILE__)),
+                 gs_yml
+
+    puts "Successfully generated: #{gs_yml}"
+  end
+
+end
+
+GSYml.deploy

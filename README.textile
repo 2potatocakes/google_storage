@@ -46,30 +46,29 @@ But it's also possible to run this gem from the command line if you want.
 
 h3. Rails setup
 
-Include the google_storage gem in your Gemfile and install config files
-<pre>gem 'google_storage'
+<pre>#Include the google_storage gem in your Gemfile and install config files
+gem 'google_storage'
 bundle install
-</pre>
-Then in your Rails application directory run:
-<pre>rails generate google_storage:install
-</pre>
-This will generate some rake tasks a google_storage.yml file in your config directory.
-<pre>/Application/config/google_storage.yml
-/Application/lib/tasks/google_storage.task
+
+#Then in your Rails application directory run:
+cd /rails_app
+rails generate google_storage:install
+
+#This will generate some rake tasks a google_storage.yml file in your config directory.
+/rails_app/config/google_storage.yml
+/rails_app/lib/tasks/google_storage.task
 </pre>
 
 h3. Ruby setup
 
-Include the google_storage gem in your Gemfile and install config files
-<pre>gem 'google_storage'
-bundle install
-</pre>
-Then in your Rails application directory run:
-<pre>rails generate google_storage:install
-</pre>
-This will generate some rake tasks a google_storage.yml file in your config directory.
-<pre>/Application/config/google_storage.yml
-/Application/lib/tasks/google_storage.task
+<pre>#Install the gem and copy the google_storage.yml file from github or else run 'deploy_gs_yml'
+#to generate a google_storage.yml file
+
+gem install google_storage
+
+cd /tmp
+deploy_gs_yml
+
 </pre>
 
 
