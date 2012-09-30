@@ -11,8 +11,17 @@ module GoogleStorage
           'https://www.googleapis.com/auth/devstorage.full_control'
         else
           'https://www.google.com/m8/feeds/'
-      end
-      "https://accounts.google.com/o/oauth2/auth?client_id=#{@client_id}&redirect_uri=#{@redirect_uri}&scope=#{scope_url}&response_type=code&access_type=offline"
+        end
+
+      auth_url = "https://accounts.google.com/o/oauth2/auth?"
+      auth_url += "client_id=#{@client_id}&"
+      auth_url += "redirect_uri=#{@redirect_uri}&"
+      auth_url += "scope=#{scope_url}&"
+      auth_url += "response_type=code&"
+      auth_url += "access_type=offline&"
+      auth_url += "approval_prompt=force"
+
+      return auth_url
     end
 
     def acquire_refresh_token(token, options={})
