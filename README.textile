@@ -1,5 +1,7 @@
 h1. Google Storage using API v2
 
+*last updated 30/9/2012*
+
 I wrote this gem to work with the newer v2 of the Google Storage API. It will run fine on all platforms and has been tested to work
 with ruby 1.8.7 and above. Let me know if you find any bugs though and feel free to make contributions.
 
