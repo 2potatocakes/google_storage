@@ -5,8 +5,11 @@ with ruby 1.8.7 and above. Let me know if you find any bugs though and feel free
 
 h2. Setup Guide
 
+This guide assumes you've already set up a Google Storage account through Google, if you haven't already yet, read the
+'Setup your Google Project Client ID's' section further below and create one first before trying to setup this gem.
+
 There's a couple of steps to follow in order to setup this gem. The new Google Storage APIv2 uses OAuth 2.0 to authenticate requests,
-you can read up more on the nitty gritty if you like, here:
+you can read up on the nitty gritty details if you like, here:
 "Google's OAuth2 Guide":http://code.google.com/apis/accounts/docs/OAuth2.html
 
 I'll try and add client side support also once this gem is up and running properly, but for the moment it's only setup to support
@@ -29,8 +32,9 @@ rails generate google_storage:install
 /rails_app/config/google_storage.yml
 /rails_app/lib/tasks/google_storage.task
 
-#Before running any of the rake tasks, update the google_storage.yml file with your own Google Storage login details and
-#read the commented out code in the google_storage.yml on how to use the rake tasks to acquire a refresh token from google
+#Before running any of the rake tasks, update the google_storage.yml file with your own Google Storage login details
+#and read the commented out code in the google_storage.yml on how to use the rake tasks to acquire a refresh token
+#from google
 </pre>
 
 h3. Ruby setup
@@ -46,13 +50,15 @@ deploy_gs_yml
 
 #This will generate a template file: /tmp/google_storage.yml
 
-#Open the template google_storage.yml file and enter your own google credentials
+#Open the generated google_storage.yml file and enter your own google credentials
 #Then run IRB and type the following:
 
 require 'google_storage'
 client = GoogleStorage::Client.new(:config_yml => '/tmp/google_storage.yml')
 
-#The authorization_url takes 1 of 3 arguments depending on how much access you want (:read_only, :read_write or :full_control)
+#The authorization_url takes 1 of 3 arguments depending on how much access you want to grant yourself:
+#(:read_only, :read_write or :full_control)
+
 puts client.authorization_url(:full_control)
 
 #This will output a really long URL, copy and paste this URL into a browser and you'll be prompted by Google to allow access
@@ -60,11 +66,15 @@ puts client.authorization_url(:full_control)
 #Accept this request and your browser will redirect to a "PAGE NOT FOUND" error most likely. This is fine.
 #In your browsers URL now though, you should see something like this:
 
-http://localhost:3000/oauth2callback?code=4/oSdp5JUOiTVcq9p6SW6rjAndreyG.wngsnANBsI4RgrKXntQAax1m82kodAI
+http://localhost:3000/example?code=4/oSdp5JUOiTVcq9p6SW6rjAfrdkuG.wngsnANBsI4RgrKXntQAax1m82kodAI
 
-#Copy the code from this URL into your google_storage.yml file and save it.
+#This is an authentication token. Copy the token from this URL and issue one more command in IRB:
 
-refresh_token: 4/oSdp5JUOiTVcq9p6SW6rjAndreyG.wngsnANBsI4RgrKXntQAax1m82kodAI
+puts client.acquire_refresh_token('4/oSdp5JUOiTVcq9p6SW6rjAfrdkuG.wngsnANBsI4RgrKXntQAax1m82kodAI')
+
+#Copy the output result from this command into the bottom of your google_storage.yml file
+
+refresh_token: 1/Lyti64r-CmpYTpmXC6n4zKK84oh__6yArTPfgANTP9f
 
 #You should now be setup and able to perform the commands in the 'Examples' section below.
 
@@ -238,6 +248,7 @@ h2. Contributions made by (and thanks to) the following people:
 Brian Armstrong
 Peter Graham
 ilyakatz
+karlentwistle
 
 
 h2. License
