@@ -61,8 +61,8 @@ client = GoogleStorage::Client.new(:config_yml => '/tmp/google_storage.yml')
 
 puts client.authorization_url(:full_control)
 
-#This will output a really long URL, copy and paste this URL into a browser and you'll be prompted by Google to allow access
-#to your google storage account.
+#This will output a really long URL, copy and paste this URL into a browser and you'll be prompted by Google
+#to allow access to your google storage account.
 #Accept this request and your browser will redirect to a "PAGE NOT FOUND" error most likely. This is fine.
 #In your browsers URL now though, you should see something like this:
 
