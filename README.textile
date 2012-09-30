@@ -99,10 +99,6 @@ Enter your project's name and brand information.
 Select Application type = Web Application and enter your site's information. If you're using localhost and running locally make sure
 you include the port number you're using as well.
 
-Once setup you'll want to use the credentials on this page:
-
-!http://commondatastorage.googleapis.com/lucas_bucket/gs_api_console2.png!
-
 
 h2. Enter your Client ID details into your google_storage.yml
 
