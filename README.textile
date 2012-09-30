@@ -101,7 +101,7 @@ you include the port number you're using as well.
 
 Once setup you'll want to use the credentials on this page:
 
-<p><img src="http://commondatastorage.googleapis.com/lucas_bucket/gs_api_console2.png" alt="" /></p>
+!http://commondatastorage.googleapis.com/lucas_bucket/gs_api_console2.png!
 
 
 h2. Enter your Client ID details into your google_storage.yml
