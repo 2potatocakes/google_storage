@@ -1,7 +1,5 @@
 h1. Google Storage using API v2
 
-*last updated 30/9/2012*
-
 I wrote this gem to work with the newer v2 of the Google Storage API. It will run fine on all platforms and has been tested to work
 with ruby 1.8.7 and above. Let me know if you find any bugs though and feel free to make contributions.
 
@@ -242,6 +240,14 @@ h3. Object Requests
 
    DELETE Object
      <pre>client.delete_object('bucket_name', 'filename.jpg')</pre>
+
+
+
+h2. Change Log
+
+* 2.0.0: Pulled in changes from karlentwistle, Updated authorization_url and updated Authorization header
+to use 'Bearer xxx', now appears to be working again.. Currently writing a full test suite so that changes
+made to the Google API itself will be picked up and this won't happen again... :(
 
 
 
