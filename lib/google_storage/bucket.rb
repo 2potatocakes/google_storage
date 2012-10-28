@@ -83,6 +83,28 @@ module GoogleStorage
 
     ###
     #
+    # <b>Returns the Website Configuration currently applied to the specified bucket</b>
+    #
+    # Google Ref: https://developers.google.com/storage/docs/website-configuration
+    #
+    # Example:
+    #
+    #   client.get_webcfg('bucket_name')
+    #
+    ###
+
+    def get_webcfg(bucket_name, options={})
+      resp = get(bucket_name, '/?websiteConfig', options)
+      resp_obj = Crack::XML.parse(resp.body)
+      if resp.code == "200"
+        resp_obj[:success] = true
+        resp_obj[:bucket_name] = bucket_name
+      end
+      return resp_obj
+    end
+
+    ###
+    #
     # <b>Returns a list of all Objects within a specified bucket</b>
     #
     # Google Ref: http://code.google.com/apis/storage/docs/reference-methods.html#getbucket
@@ -106,6 +128,40 @@ module GoogleStorage
         resp_obj[:contents] = contents
         resp_obj[:raw] = Crack::XML.parse(resp.body)
         resp_obj.each_key {|key| resp_obj.delete(key) unless key == :success || key == :bucket_name || key == :contents || key == :raw  }
+      end
+      return resp_obj
+    end
+
+    ###
+    #
+    # <b>Sets the Website Configuration on the specified bucket</b>
+    #
+    # Google Ref: https://developers.google.com/storage/docs/website-configuration
+    #
+    # Example:
+    #
+    #   client.set_webcfg('bucket_name', {
+    #     'MainPageSuffix' => 'index.html', 
+    #     'NotFoundPage' => '404.html'
+    #   })
+    #
+    ###
+
+    def set_webcfg(bucket_name, webcfg, options={})
+      # Prepare XML
+      options[:data] = '<WebsiteConfiguration>'
+      webcfg.each do |key, val|
+        options[:data] << "<#{key}>#{val}</#{key}>"
+      end if webcfg.respond_to?(:each)
+      options[:data] << '</WebsiteConfiguration>'
+      # Make the request
+      resp = put(bucket_name, '/?websiteConfig', options)
+      resp_obj = Crack::XML.parse(resp.body)
+      if resp.code == "200"
+        resp_obj.clear
+        resp_obj[:success] = true
+        resp_obj[:bucket_name] = bucket_name
+        resp_obj[:message] = "Website Configuration successful"
       end
       return resp_obj
     end
