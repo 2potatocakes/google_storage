@@ -141,8 +141,23 @@ module GoogleStorage
     #
     ###
 
-    def set_webcfg(bucket_name, webcfg)
-      raise NotImplementedError.new "stub: get bucket_name's webcfg"
+    def set_webcfg(bucket_name, webcfg, options={})
+      # Prepare XML
+      options[:data] = '<WebsiteConfiguration>'
+      webcfg.each do |key, val|
+        options[:data] << "<#{key}>#{val}</#{key}>"
+      end if webcfg.respond_to?(:each)
+      options[:data] << '</WebsiteConfiguration>'
+      # Make the request
+      resp = put(bucket_name, '/?websiteConfig', options)
+      resp_obj = Crack::XML.parse(resp.body)
+      if resp.code == "200"
+        resp_obj.clear
+        resp_obj[:success] = true
+        resp_obj[:bucket_name] = bucket_name
+        resp_obj[:message] = "Website Configuration successful"
+      end
+      return resp_obj
     end
 
     ###
