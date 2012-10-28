@@ -83,6 +83,22 @@ module GoogleStorage
 
     ###
     #
+    # <b>Returns the Website Configuration currently applied to the specified bucket</b>
+    #
+    # Google Ref: https://developers.google.com/storage/docs/website-configuration
+    #
+    # Example:
+    #
+    #   client.get_webcfg('bucket_name')
+    #
+    ###
+
+    def get_webcfg(bucket_name)
+      raise NotImplementedError.new "stub: get bucket_name's webcfg"
+    end
+
+    ###
+    #
     # <b>Returns a list of all Objects within a specified bucket</b>
     #
     # Google Ref: http://code.google.com/apis/storage/docs/reference-methods.html#getbucket
@@ -108,6 +124,25 @@ module GoogleStorage
         resp_obj.each_key {|key| resp_obj.delete(key) unless key == :success || key == :bucket_name || key == :contents || key == :raw  }
       end
       return resp_obj
+    end
+
+    ###
+    #
+    # <b>Sets the Website Configuration on the specified bucket</b>
+    #
+    # Google Ref: https://developers.google.com/storage/docs/website-configuration
+    #
+    # Example:
+    #
+    #   client.set_webcfg('bucket_name', {
+    #     'MainPageSuffix' => 'index.html', 
+    #     'NotFoundPage' => '404.html'
+    #   })
+    #
+    ###
+
+    def set_webcfg(bucket_name, webcfg)
+      raise NotImplementedError.new "stub: get bucket_name's webcfg"
     end
 
     ###
