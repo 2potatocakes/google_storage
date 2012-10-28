@@ -2,6 +2,7 @@ require 'google_storage/request'
 require 'google_storage/token'
 require 'google_storage/bucket'
 require 'google_storage/object'
+require 'erb'
 require 'yaml'
 
 module GoogleStorage
@@ -76,7 +77,7 @@ Example: GoogleStorage::Client.new(:config_yml => 'path to your google storage y
 \nIf running a rake task try passing: path='path to your google storage yml'
 \n\n" unless config_path && File.exists?(config_path)
 
-      config_yml = YAML::load(File.open(config_path))
+      config_yml = YAML.load(ERB.new(IO.read(config_path)).result)
 
       @project_id     = config_yml['google_config']['x-goog-project-id']
 
