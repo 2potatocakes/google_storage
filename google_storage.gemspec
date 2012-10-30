@@ -16,17 +16,4 @@ Gem::Specification.new do |gem|
   gem.require_paths     = ['lib']
 
   gem.add_dependency('crack')
-
-  gem.add_development_dependency('yard')
-  gem.add_development_dependency('RedCloth')
-
-  gem.add_development_dependency('rspec')
-  gem.add_development_dependency('simplecov')
-
-  gem.add_development_dependency('vcr')
-  gem.add_development_dependency('fakeweb')
-  gem.add_development_dependency('uuid')
-
-  gem.add_development_dependency('guard-rspec')
-  gem.add_development_dependency('guard-bundler')
 end
