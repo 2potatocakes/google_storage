@@ -11,3 +11,5 @@ rvm:
   - ree
 script:
   - bundle exec rspec
+allow_failures:
+  - rvm: ruby-head
