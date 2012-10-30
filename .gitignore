@@ -5,6 +5,4 @@ pkg/*
 .idea
 .yardoc
 .yardoc/*
-
-
-
+coverage/*
