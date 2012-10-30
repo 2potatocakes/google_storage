@@ -1,0 +1,100 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: US-ASCII
+      string: client_id=____SILENCED:_client_id____&client_secret=____SILENCED:_client_secret____&grant_type=refresh_token&refresh_token=____SILENCED:_refresh_token____
+    headers:
+      host:
+      - accounts.google.com
+      date:
+      - Tue, 30 Oct 2012 04:44:06 GMT
+      content-type:
+      - application/x-www-form-urlencoded
+      content-length:
+      - '0'
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      pragma:
+      - no-cache
+      expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date:
+      - Tue, 30 Oct 2012 04:44:06 GMT
+      content-type:
+      - application/json
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"access_token\" : \"ya29.AHES6ZRJ_VNNzeZCM8EUICn8xLlPn2e_LUs2Fs7staD2rNxmxlt5Aqc\",\n
+        \ \"token_type\" : \"Bearer\",\n  \"expires_in\" : 3600\n}"
+    http_version: '1.1'
+  recorded_at: Tue, 30 Oct 2012 04:44:06 GMT
+- request:
+    method: get
+    uri: https://9c0a6d00-0478-0130-7986-0023dfa5d78c.commondatastorage.googleapis.com/?websiteConfig
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+      host:
+      - 9c0a6d00-0478-0130-7986-0023dfa5d78c.commondatastorage.googleapis.com
+      date:
+      - Tue, 30 Oct 2012 04:44:06 GMT
+      content-type:
+      - binary/octet-stream
+      content-length:
+      - '0'
+      x-goog-api-version:
+      - 2
+      authorization:
+      - Bearer ya29.AHES6ZRJ_VNNzeZCM8EUICn8xLlPn2e_LUs2Fs7staD2rNxmxlt5Aqc
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      content-type:
+      - application/xml; charset=UTF-8
+      content-length:
+      - '163'
+      vary:
+      - Origin
+      date:
+      - Tue, 30 Oct 2012 04:44:06 GMT
+      expires:
+      - Tue, 30 Oct 2012 04:44:06 GMT
+      cache-control:
+      - private, max-age=0
+    body:
+      encoding: US-ASCII
+      string: <?xml version='1.0' encoding='UTF-8'?><WebsiteConfiguration><MainPageSuffix>index.html</MainPageSuffix><NotFoundPage>404.html</NotFoundPage></WebsiteConfiguration>
+    http_version: '1.1'
+  recorded_at: Tue, 30 Oct 2012 04:44:06 GMT
+recorded_with: VCR 2.2.5
