@@ -14,6 +14,8 @@ require 'spec_helper'
 #     client.create_bucket '9c0a6d00-0478-0130-7986-0023dfa5d78c', :x_goog_acl => 'public-read'
 #     client.set_webcfg '9c0a6d00-0478-0130-7986-0023dfa5d78c', {'MainPageSuffix' => 'index.html', 'NotFoundPage' => '404.html'}
 #
+#     client.create_bucket '7baa01c0-04f5-0130-7987-0023dfa5d78c', :x_goog_acl => 'public-read'
+#
 # Bucket names are UUIDs (or GUIDs). Generate new ones with
 #
 #     require 'uuid'
@@ -36,7 +38,7 @@ describe GoogleStorage::Client do
 
       it { subject[:success].should be_true }
       it { subject[:bucket_name].should == bucket_name }
-      it { subject["WebsiteConfiguration"].should be_nil }
+      it { subject['WebsiteConfiguration'].should be_nil }
     end
 
     context 'bucket exists with a webcfg' do 
@@ -46,12 +48,40 @@ describe GoogleStorage::Client do
 
       it { subject[:success].should be_true }
       it { subject[:bucket_name].should == bucket_name }
-      it { subject["WebsiteConfiguration"].should ==
+      it { subject['WebsiteConfiguration'].should ==
         {
-          "MainPageSuffix"  =>  "index.html", 
-          "NotFoundPage"    =>  "404.html"
+          'MainPageSuffix'  =>  'index.html', 
+          'NotFoundPage'    =>  '404.html'
         } 
       }
+    end
+
+  end
+
+  context '#set_webcfg' do
+
+    context 'bucket exists with unkown webcfg' do
+      let(:bucket_name) { '7baa01c0-04f5-0130-7987-0023dfa5d78c' }
+
+      context 'client ensures correct config exists' do
+        subject { client.set_webcfg bucket_name, {
+            'MainPageSuffix'  =>  'index.html',
+            'NotFoundPage'    =>  '404.html'
+          }
+        }
+
+        it { subject[:success].should be_true }
+        it { subject[:bucket_name].should == bucket_name }
+        it { subject[:message].should == 'Website Configuration successful' }
+      end
+
+      context 'client ensures no config exists' do
+        subject { client.set_webcfg bucket_name, nil}
+
+        it { subject[:success].should be_true }
+        it { subject[:bucket_name].should == bucket_name }
+        it { subject[:message].should == 'Website Configuration successful' }
+      end
     end
 
   end
