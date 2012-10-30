@@ -3,6 +3,8 @@ source "http://rubygems.org"
 # Specify your gem's dependencies in google_storage.gemspec
 gemspec
 
+gem 'jruby-openssl', :platforms => :jruby
+
 group :development do
   # Watch file change events instead of polling
   gem 'rb-fsevent', :require => false,        :group => :darwin              # OSX
