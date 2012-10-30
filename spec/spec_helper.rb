@@ -18,6 +18,7 @@ SimpleCov.start
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
   c.hook_into :fakeweb
+  c.default_cassette_options = { :record => :none }
   c.configure_rspec_metadata!
   SecretData.new.silence! do |find, replace|
     # https://www.relishapp.com/myronmarston/vcr/docs/configuration/filter-sensitive-data
