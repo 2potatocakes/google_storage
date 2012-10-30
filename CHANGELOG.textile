@@ -1,0 +1,23 @@
+h2. 0.2.1 [unreleased]
+
+* Rewrite gemspec to include development dependencies
+  "#8":https://github.com/2potatocakes/google_storage/pull/8 .
+  --"Alexander Wenzowski":https://github.com/wenzowski
+* Add Guard to automatically run test suite
+  "#8":https://github.com/2potatocakes/google_storage/pull/8 .
+  --"Alexander Wenzowski":https://github.com/wenzowski
+* Add tests for GoogleStorage::Client YAML configuration
+  "#8":https://github.com/2potatocakes/google_storage/pull/8 .
+  --"Alexander Wenzowski":https://github.com/wenzowski
+* Configure VCR with RSpec and ignore secret data to prevent hijacking
+  "#8":https://github.com/2potatocakes/google_storage/pull/8 .
+  --"Alexander Wenzowski":https://github.com/wenzowski
+* Remove Test::Unit in favor of RSpec
+  "#8":https://github.com/2potatocakes/google_storage/pull/8 .
+  --"Alexander Wenzowski":https://github.com/wenzowski
+* Enable ENV vars in YAML config file by preprossing through ERB
+  "#7":https://github.com/2potatocakes/google_storage/pull/7 .
+  --"Alexander Wenzowski":https://github.com/wenzowski
+* Support for Google Storage Website Configuration
+  "#6":https://github.com/2potatocakes/google_storage/pull/6 .
+  --"Alexander Wenzowski":https://github.com/wenzowski
