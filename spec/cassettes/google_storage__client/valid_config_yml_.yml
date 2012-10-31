@@ -5,12 +5,12 @@ http_interactions:
     uri: https://accounts.google.com/o/oauth2/token
     body:
       encoding: US-ASCII
-      string: client_id=____SILENCED:_client_id____&client_secret=____SILENCED:_client_secret____&grant_type=refresh_token&refresh_token=____SILENCED:_refresh_token____
+      string: client_id=____SILENCED_client_id____&client_secret=____SILENCED_client_secret____&grant_type=refresh_token&refresh_token=____SILENCED_refresh_token____
     headers:
       host:
       - accounts.google.com
       date:
-      - Tue, 30 Oct 2012 05:42:47 GMT
+      - Wed, 31 Oct 2012 00:26:01 GMT
       content-type:
       - application/x-www-form-urlencoded
       content-length:
@@ -31,7 +31,7 @@ http_interactions:
       expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
       date:
-      - Tue, 30 Oct 2012 05:42:47 GMT
+      - Wed, 31 Oct 2012 00:26:02 GMT
       content-type:
       - application/json
       x-content-type-options:
@@ -46,8 +46,8 @@ http_interactions:
       - close
     body:
       encoding: US-ASCII
-      string: ! "{\n  \"access_token\" : \"ya29.AHES6ZQalX03S3bzQYaCcCht8lxDiiSxdGvzq4qSQ11NyP33flamv3o\",\n
-        \ \"token_type\" : \"Bearer\",\n  \"expires_in\" : 3600\n}"
+      string: ! "{\n  \"access_token\" : \"____SILENCED_access_token____\",\n  \"token_type\"
+        : \"Bearer\",\n  \"expires_in\" : 3600\n}"
     http_version: '1.1'
-  recorded_at: Tue, 30 Oct 2012 05:42:47 GMT
-recorded_with: VCR 2.2.5
+  recorded_at: Wed, 31 Oct 2012 00:26:02 GMT
+recorded_with: VCR 2.3.0

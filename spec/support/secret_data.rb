@@ -13,7 +13,7 @@ class SecretData
     nested_hash.each_pair do |key, val|
       case val
       when String
-        silence(val, "____SILENCED:_#{key}____", &block)
+        silence(val, "____SILENCED_#{key}____", &block)
       when Hash
         recursive_silence(val, &block)
       end
