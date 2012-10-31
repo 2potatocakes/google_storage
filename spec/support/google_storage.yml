@@ -1,0 +1,10 @@
+google_config:
+  x-goog-project-id: <%= ENV['GOOGLE_PROJECT_ID'] %>
+
+web_applications:
+  client_id: <%= ENV['GOOGLE_CLIENT_ID'] %>
+  client_secret: <%= ENV['GOOGLE_CLIENT_SECRET'] %>
+  redirect_uris: <%= ENV['GOOGLE_REDIRECT_URIS'] %>
+  js_origins: <%= ENV['GOOGLE_JS_ORIGINS'] %>
+
+refresh_token: <%= ENV['GOOGLE_REFRESH_TOKEN'] || true %>

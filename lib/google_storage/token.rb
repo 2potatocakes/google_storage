@@ -35,7 +35,15 @@ module GoogleStorage
 
     def refresh_access_token(token, options={})
       options['grant_type'] = 'refresh_token'
-      post_request('accounts.google.com', '/o/oauth2/token', token, options)
+      response = post_request(
+        'accounts.google.com', '/o/oauth2/token', token, options
+      )
+      after_refresh_access_token(response)
+      response
+    end
+
+    def after_refresh_access_token(response)
+      # placeholder monkeypatched by test suite
     end
 
   end

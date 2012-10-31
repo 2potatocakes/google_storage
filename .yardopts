@@ -1,1 +1,4 @@
---no-private lib/**/*.rb - README.textile
+--no-private lib/**/*.rb 
+- README.textile 
+- LICENSE
+- CHANGELOG.textile
