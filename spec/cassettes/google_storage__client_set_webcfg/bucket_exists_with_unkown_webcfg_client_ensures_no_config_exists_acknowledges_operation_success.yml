@@ -10,7 +10,7 @@ http_interactions:
       host:
       - accounts.google.com
       date:
-      - Wed, 31 Oct 2012 00:26:03 GMT
+      - Wed, 31 Oct 2012 09:00:51 GMT
       content-type:
       - application/x-www-form-urlencoded
       content-length:
@@ -31,7 +31,7 @@ http_interactions:
       expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
       date:
-      - Wed, 31 Oct 2012 00:26:03 GMT
+      - Wed, 31 Oct 2012 09:00:51 GMT
       content-type:
       - application/json
       x-content-type-options:
@@ -49,13 +49,13 @@ http_interactions:
       string: ! "{\n  \"access_token\" : \"____SILENCED_access_token____\",\n  \"token_type\"
         : \"Bearer\",\n  \"expires_in\" : 3600\n}"
     http_version: '1.1'
-  recorded_at: Wed, 31 Oct 2012 00:26:03 GMT
+  recorded_at: Wed, 31 Oct 2012 09:00:51 GMT
 - request:
     method: put
     uri: https://7baa01c0-04f5-0130-7987-0023dfa5d78c.commondatastorage.googleapis.com/?websiteConfig
     body:
       encoding: US-ASCII
-      string: <WebsiteConfiguration><MainPageSuffix>index.html</MainPageSuffix><NotFoundPage>404.html</NotFoundPage></WebsiteConfiguration>
+      string: <WebsiteConfiguration></WebsiteConfiguration>
     headers:
       accept:
       - ! '*/*'
@@ -64,11 +64,11 @@ http_interactions:
       host:
       - 7baa01c0-04f5-0130-7987-0023dfa5d78c.commondatastorage.googleapis.com
       date:
-      - Wed, 31 Oct 2012 00:26:03 GMT
+      - Wed, 31 Oct 2012 09:00:51 GMT
       content-type:
       - binary/octet-stream
       content-length:
-      - '125'
+      - '45'
       x-goog-api-version:
       - 2
       authorization:
@@ -83,7 +83,7 @@ http_interactions:
       vary:
       - Origin
       date:
-      - Wed, 31 Oct 2012 00:26:04 GMT
+      - Wed, 31 Oct 2012 09:00:51 GMT
       pragma:
       - no-cache
       expires:
@@ -98,5 +98,5 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     http_version: '1.1'
-  recorded_at: Wed, 31 Oct 2012 00:26:04 GMT
+  recorded_at: Wed, 31 Oct 2012 09:00:52 GMT
 recorded_with: VCR 2.3.0

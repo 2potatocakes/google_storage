@@ -10,7 +10,7 @@ http_interactions:
       host:
       - accounts.google.com
       date:
-      - Wed, 31 Oct 2012 00:26:04 GMT
+      - Wed, 31 Oct 2012 09:00:49 GMT
       content-type:
       - application/x-www-form-urlencoded
       content-length:
@@ -31,7 +31,7 @@ http_interactions:
       expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
       date:
-      - Wed, 31 Oct 2012 00:26:05 GMT
+      - Wed, 31 Oct 2012 09:00:50 GMT
       content-type:
       - application/json
       x-content-type-options:
@@ -49,26 +49,26 @@ http_interactions:
       string: ! "{\n  \"access_token\" : \"____SILENCED_access_token____\",\n  \"token_type\"
         : \"Bearer\",\n  \"expires_in\" : 3600\n}"
     http_version: '1.1'
-  recorded_at: Wed, 31 Oct 2012 00:26:05 GMT
+  recorded_at: Wed, 31 Oct 2012 09:00:50 GMT
 - request:
-    method: get
-    uri: https://9c0a6d00-0478-0130-7986-0023dfa5d78c.commondatastorage.googleapis.com/?websiteConfig
+    method: put
+    uri: https://7baa01c0-04f5-0130-7987-0023dfa5d78c.commondatastorage.googleapis.com/?websiteConfig
     body:
       encoding: US-ASCII
-      string: ''
+      string: <WebsiteConfiguration><MainPageSuffix>index.html</MainPageSuffix><NotFoundPage>404.html</NotFoundPage></WebsiteConfiguration>
     headers:
       accept:
       - ! '*/*'
       user-agent:
       - Ruby
       host:
-      - 9c0a6d00-0478-0130-7986-0023dfa5d78c.commondatastorage.googleapis.com
+      - 7baa01c0-04f5-0130-7987-0023dfa5d78c.commondatastorage.googleapis.com
       date:
-      - Wed, 31 Oct 2012 00:26:05 GMT
+      - Wed, 31 Oct 2012 09:00:50 GMT
       content-type:
       - binary/octet-stream
       content-length:
-      - '0'
+      - '125'
       x-goog-api-version:
       - 2
       authorization:
@@ -80,21 +80,23 @@ http_interactions:
     headers:
       server:
       - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
-      content-type:
-      - application/xml; charset=UTF-8
-      content-length:
-      - '163'
       vary:
       - Origin
       date:
-      - Wed, 31 Oct 2012 00:26:05 GMT
+      - Wed, 31 Oct 2012 09:00:50 GMT
+      pragma:
+      - no-cache
       expires:
-      - Wed, 31 Oct 2012 00:26:05 GMT
+      - Fri, 01 Jan 1990 00:00:00 GMT
       cache-control:
-      - private, max-age=0
+      - no-cache, no-store, must-revalidate
+      content-length:
+      - '0'
+      content-type:
+      - text/html; charset=UTF-8
     body:
       encoding: US-ASCII
-      string: <?xml version='1.0' encoding='UTF-8'?><WebsiteConfiguration><MainPageSuffix>index.html</MainPageSuffix><NotFoundPage>404.html</NotFoundPage></WebsiteConfiguration>
+      string: ''
     http_version: '1.1'
-  recorded_at: Wed, 31 Oct 2012 00:26:05 GMT
+  recorded_at: Wed, 31 Oct 2012 09:00:50 GMT
 recorded_with: VCR 2.3.0
