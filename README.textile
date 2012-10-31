@@ -1,4 +1,4 @@
-# @encoding utf-8
+#@encoding utf-8
 
 h1. Google Storage using API v2
 
@@ -247,10 +247,7 @@ h3. Object Requests
 
 h2. Change Log
 
-* 2.0.0: Pulled in changes from karlentwistle, Updated authorization_url and updated Authorization header
-to use 'Bearer xxx', now appears to be working again.. Currently writing a full test suite so that changes
-made to the Google API itself will be picked up and this won't happen again... :(
-
+See {file:Changelog.textile}.
 
 
 h2. Contributions made by (and thanks to) the following people:
@@ -263,43 +260,18 @@ karlentwistle
 
 h2. Documentation
 
-All documentation is available "via YARD":http://rubydoc.info/gems/google_storage .
+Find "release-specific documentation":http://rubydoc.info/gems/google_storage 
+online, or generate prerelease documentation directly from source using
 
-To view prerelease documentation, use
+bc.. $ git clone git://github.com/2potatocakes/google_storage.git
+$ cd google_storage
+$ bundle install
+$ bundle exec yard server --reload
 
-  <pre>
-    $ git clone git://github.com/2potatocakes/google_storage.git
-    $ cd google_storage
-    $ yard server --reload
-  </pre>
-
-and view generated docs at "http://localhost:8808":http://localhost:8808 .
-
-
-h2. License
-
-MIT License
-
-Copyright (C) 2011 by Lucas Hills
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+p. and view generated docs as you code at 
+"http://localhost:8808":http://localhost:8808 .
 
 
+h2. MIT License
 
-
+Copyright (C) 2011 by Lucas Hills. See {file:LICENSE}.
