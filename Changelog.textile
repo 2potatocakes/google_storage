@@ -1,3 +1,5 @@
+#@encoding utf-8
+
 h2. 0.2.1 [unreleased]
 
 * Rewrite gemspec to include development dependencies
@@ -21,3 +23,13 @@ h2. 0.2.1 [unreleased]
 * Support for Google Storage Website Configuration
   "#6":https://github.com/2potatocakes/google_storage/pull/6 .
   --"Alexander Wenzowski":https://github.com/wenzowski
+
+
+h2. 0.2.0
+
+* acquire_refresh_token fix
+  "#5":https://github.com/2potatocakes/google_storage/pull/5
+  --"Karl Entwistle":https://github.com/karlentwistle
+* Updated authorization_url and updated Authorization header 
+  to use 'Bearer xxx', now appears to be working again.
+  --"Lucas Hills":https://github.com/2potatocakes
