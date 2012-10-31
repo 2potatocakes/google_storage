@@ -1,3 +1,5 @@
+# @encoding utf-8
+
 h1. Google Storage using API v2
 
 I wrote this gem to work with the newer v2 of the Google Storage API. It will run fine on all platforms and has been tested to work
@@ -257,6 +259,21 @@ Brian Armstrong
 Peter Graham
 ilyakatz
 karlentwistle
+
+
+h2. Documentation
+
+All documentation is available "via YARD":http://rubydoc.info/gems/google_storage .
+
+To view prerelease documentation, use
+
+  <pre>
+    $ git clone git://github.com/2potatocakes/google_storage.git
+    $ cd google_storage
+    $ yard server --reload
+  </pre>
+
+and view generated docs at "http://localhost:8808":http://localhost:8808 .
 
 
 h2. License
