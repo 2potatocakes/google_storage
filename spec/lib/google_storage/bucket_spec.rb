@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'shared_examples/client'
 
 ##
 # Prep for recording new episodes:
@@ -30,15 +31,15 @@ describe GoogleStorage::Client do
   }
 
   context '#get_webcfg' do
-
     context 'bucket exists with no webcfg' do
       let(:bucket_name) { '7829f2c0-0476-0130-7985-0023dfa5d78c' }
 
       subject { client.get_webcfg bucket_name }
 
-      it { subject[:success].should be_true }
-      it { subject[:bucket_name].should == bucket_name }
-      it { subject['WebsiteConfiguration'].should be_nil }
+      it_receives 'a successful response'
+      it 'does not return a webcfg' do
+        subject['WebsiteConfiguration'].should be_nil
+      end
     end
 
     context 'bucket exists with a webcfg' do 
@@ -46,20 +47,17 @@ describe GoogleStorage::Client do
 
       subject { client.get_webcfg bucket_name }
 
-      it { subject[:success].should be_true }
-      it { subject[:bucket_name].should == bucket_name }
-      it { subject['WebsiteConfiguration'].should ==
-        {
+      it_receives 'a successful response'
+      it 'returns the existing webcfg' do
+        subject['WebsiteConfiguration'].should == {
           'MainPageSuffix'  =>  'index.html', 
           'NotFoundPage'    =>  '404.html'
         } 
-      }
+      end
     end
-
   end
 
   context '#set_webcfg' do
-
     context 'bucket exists with unkown webcfg' do
       let(:bucket_name) { '7baa01c0-04f5-0130-7987-0023dfa5d78c' }
 
@@ -70,20 +68,21 @@ describe GoogleStorage::Client do
           }
         }
 
-        it { subject[:success].should be_true }
-        it { subject[:bucket_name].should == bucket_name }
-        it { subject[:message].should == 'Website Configuration successful' }
+        it_receives 'a successful response'
+        it 'acknowledges operation success' do
+          subject[:message].should == 'Website Configuration successful'
+        end
       end
 
       context 'client ensures no config exists' do
         subject { client.set_webcfg bucket_name, nil}
 
-        it { subject[:success].should be_true }
-        it { subject[:bucket_name].should == bucket_name }
-        it { subject[:message].should == 'Website Configuration successful' }
+        it_receives 'a successful response'
+        it 'acknowledges operation success' do
+          subject[:message].should == 'Website Configuration successful'
+        end
       end
     end
-
   end
 
 end
