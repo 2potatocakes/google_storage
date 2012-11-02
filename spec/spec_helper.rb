@@ -5,8 +5,14 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+begin
+  require 'simplecov'
+  SimpleCov.start
+rescue LoadError
+end
+
 require 'google_storage'
-require 'simplecov'
+require 'secret_data'
 require 'fakeweb'
 require 'vcr'
 
@@ -14,16 +20,16 @@ require File.expand_path('../support/secret_data', __FILE__)
 require File.expand_path('../support/monkeypatch_silence_access_token', __FILE__)
 
 
-SimpleCov.start
-
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
   c.hook_into :fakeweb
   c.default_cassette_options = { :record => :none }
   c.configure_rspec_metadata!
-  SecretData.new.silence! do |find, replace|
-    # https://www.relishapp.com/myronmarston/vcr/docs/configuration/filter-sensitive-data
+  SecretData.new(
+    :yml_path => 'spec/support/google_storage.yml'
+  ).silence do |find, replace|
     c.filter_sensitive_data(replace) { find }
+    c.filter_sensitive_data(URI.escape(replace, '/')) { find }
   end
 end
 
