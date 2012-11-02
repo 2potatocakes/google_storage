@@ -16,7 +16,6 @@ require 'secret_data'
 require 'fakeweb'
 require 'vcr'
 
-require File.expand_path('../support/secret_data', __FILE__)
 require File.expand_path('../support/monkeypatch_silence_access_token', __FILE__)
 
 
