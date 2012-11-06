@@ -1,0 +1,279 @@
+--- 
+http_interactions: 
+- request: 
+    method: delete
+    uri: https://gs-test-b5633b900a140130fd68005b2013754b.storage.googleapis.com/
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Ruby
+      Host: 
+      - gs-test-b5633b900a140130fd68005b2013754b.storage.googleapis.com
+      Date: 
+      - Tue, 06 Nov 2012 07:51:37 GMT
+      Content-Type: 
+      - binary/octet-stream
+      Content-Length: 
+      - "0"
+      X-Goog-Api-Version: 
+      - 2
+      Authorization: 
+      - ____SILENCED_access_token____
+  response: 
+    status: 
+      code: 404
+      message: Not Found
+    headers: 
+      Server: 
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      Vary: 
+      - Origin
+      Content-Type: 
+      - application/xml; charset=UTF-8
+      Content-Length: 
+      - "133"
+      Date: 
+      - Tue, 06 Nov 2012 07:51:38 GMT
+      Expires: 
+      - Tue, 06 Nov 2012 07:51:38 GMT
+      Cache-Control: 
+      - private, max-age=0
+    body: 
+      encoding: US-ASCII
+      string: <?xml version='1.0' encoding='UTF-8'?><Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist.</Message></Error>
+    http_version: 
+  recorded_at: Tue, 06 Nov 2012 07:51:38 GMT
+- request: 
+    method: delete
+    uri: https://gs-test-b89026500a140130fd6a005b2013754b.storage.googleapis.com/
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Ruby
+      Host: 
+      - gs-test-b89026500a140130fd6a005b2013754b.storage.googleapis.com
+      Date: 
+      - Tue, 06 Nov 2012 07:51:43 GMT
+      Content-Type: 
+      - binary/octet-stream
+      Content-Length: 
+      - "0"
+      X-Goog-Api-Version: 
+      - 2
+      Authorization: 
+      - ____SILENCED_access_token____
+  response: 
+    status: 
+      code: 404
+      message: Not Found
+    headers: 
+      Server: 
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      Vary: 
+      - Origin
+      Content-Type: 
+      - application/xml; charset=UTF-8
+      Content-Length: 
+      - "133"
+      Date: 
+      - Tue, 06 Nov 2012 07:51:43 GMT
+      Expires: 
+      - Tue, 06 Nov 2012 07:51:43 GMT
+      Cache-Control: 
+      - private, max-age=0
+    body: 
+      encoding: US-ASCII
+      string: <?xml version='1.0' encoding='UTF-8'?><Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist.</Message></Error>
+    http_version: 
+  recorded_at: Tue, 06 Nov 2012 07:51:43 GMT
+- request: 
+    method: delete
+    uri: https://gs-test-bbeed0b00a140130fd6c005b2013754b.storage.googleapis.com/
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Ruby
+      Host: 
+      - gs-test-bbeed0b00a140130fd6c005b2013754b.storage.googleapis.com
+      Date: 
+      - Tue, 06 Nov 2012 07:51:47 GMT
+      Content-Type: 
+      - binary/octet-stream
+      Content-Length: 
+      - "0"
+      X-Goog-Api-Version: 
+      - 2
+      Authorization: 
+      - ____SILENCED_access_token____
+  response: 
+    status: 
+      code: 204
+      message: No Content
+    headers: 
+      Server: 
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      Vary: 
+      - Origin
+      Date: 
+      - Tue, 06 Nov 2012 07:51:48 GMT
+      Expires: 
+      - Tue, 06 Nov 2012 07:51:48 GMT
+      Cache-Control: 
+      - private, max-age=0
+      Content-Length: 
+      - "0"
+    body: 
+      encoding: US-ASCII
+      string: ""
+    http_version: 
+  recorded_at: Tue, 06 Nov 2012 07:51:49 GMT
+- request: 
+    method: delete
+    uri: https://gs-test-c013b6600a140130fd6e005b2013754b.storage.googleapis.com/
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Ruby
+      Host: 
+      - gs-test-c013b6600a140130fd6e005b2013754b.storage.googleapis.com
+      Date: 
+      - Tue, 06 Nov 2012 07:51:54 GMT
+      Content-Type: 
+      - binary/octet-stream
+      Content-Length: 
+      - "0"
+      X-Goog-Api-Version: 
+      - 2
+      Authorization: 
+      - ____SILENCED_access_token____
+  response: 
+    status: 
+      code: 204
+      message: No Content
+    headers: 
+      Server: 
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      Vary: 
+      - Origin
+      Date: 
+      - Tue, 06 Nov 2012 07:51:56 GMT
+      Expires: 
+      - Tue, 06 Nov 2012 07:51:56 GMT
+      Cache-Control: 
+      - private, max-age=0
+      Content-Length: 
+      - "0"
+    body: 
+      encoding: US-ASCII
+      string: ""
+    http_version: 
+  recorded_at: Tue, 06 Nov 2012 07:51:56 GMT
+- request: 
+    method: delete
+    uri: https://gs-test-c3424ed00a140130fd70005b2013754b.storage.googleapis.com/
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Ruby
+      Host: 
+      - gs-test-c3424ed00a140130fd70005b2013754b.storage.googleapis.com
+      Date: 
+      - Tue, 06 Nov 2012 07:51:59 GMT
+      Content-Type: 
+      - binary/octet-stream
+      Content-Length: 
+      - "0"
+      X-Goog-Api-Version: 
+      - 2
+      Authorization: 
+      - ____SILENCED_access_token____
+  response: 
+    status: 
+      code: 204
+      message: No Content
+    headers: 
+      Server: 
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      Vary: 
+      - Origin
+      Date: 
+      - Tue, 06 Nov 2012 07:52:00 GMT
+      Expires: 
+      - Tue, 06 Nov 2012 07:52:00 GMT
+      Cache-Control: 
+      - private, max-age=0
+      Content-Length: 
+      - "0"
+    body: 
+      encoding: US-ASCII
+      string: ""
+    http_version: 
+  recorded_at: Tue, 06 Nov 2012 07:52:01 GMT
+- request: 
+    method: delete
+    uri: https://gs-test-c62250200a140130fd72005b2013754b.storage.googleapis.com/
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Ruby
+      Host: 
+      - gs-test-c62250200a140130fd72005b2013754b.storage.googleapis.com
+      Date: 
+      - Tue, 06 Nov 2012 07:52:02 GMT
+      Content-Type: 
+      - binary/octet-stream
+      Content-Length: 
+      - "0"
+      X-Goog-Api-Version: 
+      - 2
+      Authorization: 
+      - ____SILENCED_access_token____
+  response: 
+    status: 
+      code: 404
+      message: Not Found
+    headers: 
+      Server: 
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      Vary: 
+      - Origin
+      Content-Type: 
+      - application/xml; charset=UTF-8
+      Content-Length: 
+      - "133"
+      Date: 
+      - Tue, 06 Nov 2012 07:52:03 GMT
+      Expires: 
+      - Tue, 06 Nov 2012 07:52:03 GMT
+      Cache-Control: 
+      - private, max-age=0
+    body: 
+      encoding: US-ASCII
+      string: <?xml version='1.0' encoding='UTF-8'?><Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist.</Message></Error>
+    http_version: 
+  recorded_at: Tue, 06 Nov 2012 07:52:03 GMT
+recorded_with: VCR 2.3.0

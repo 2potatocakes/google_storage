@@ -1,0 +1,148 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://storage.googleapis.com/gs-test-32afd6500a160130fdb5005b2013754b?websiteConfig
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+      Host:
+      - storage.googleapis.com
+      Date:
+      - Tue, 06 Nov 2012 08:02:16 GMT
+      Content-Type:
+      - binary/octet-stream
+      Content-Length:
+      - '0'
+      X-Goog-Api-Version:
+      - 2
+      Authorization:
+      - ____SILENCED_access_token____
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      Content-Type:
+      - application/xml; charset=UTF-8
+      Content-Length:
+      - '163'
+      Vary:
+      - Origin
+      Date:
+      - Tue, 06 Nov 2012 08:02:16 GMT
+      Expires:
+      - Tue, 06 Nov 2012 08:02:16 GMT
+      Cache-Control:
+      - private, max-age=0
+    body:
+      encoding: US-ASCII
+      string: <?xml version='1.0' encoding='UTF-8'?><WebsiteConfiguration><MainPageSuffix>index.html</MainPageSuffix><NotFoundPage>404.html</NotFoundPage></WebsiteConfiguration>
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 08:02:16 GMT
+- request:
+    method: put
+    uri: https://storage.googleapis.com/gs-test-3585ec400a160130fdb6005b2013754b?websiteConfig
+    body:
+      encoding: US-ASCII
+      string: <WebsiteConfiguration><MainPageSuffix>index.html</MainPageSuffix><NotFoundPage>404.html</NotFoundPage></WebsiteConfiguration>
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+      Host:
+      - storage.googleapis.com
+      Date:
+      - Tue, 06 Nov 2012 08:02:20 GMT
+      Content-Type:
+      - binary/octet-stream
+      Content-Length:
+      - '125'
+      X-Goog-Api-Version:
+      - 2
+      Authorization:
+      - ____SILENCED_access_token____
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      Vary:
+      - Origin
+      Date:
+      - Tue, 06 Nov 2012 08:02:21 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Length:
+      - '0'
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 08:02:21 GMT
+- request:
+    method: put
+    uri: https://storage.googleapis.com/gs-test-3585ec400a160130fdb6005b2013754b?websiteConfig
+    body:
+      encoding: US-ASCII
+      string: <WebsiteConfiguration></WebsiteConfiguration>
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+      Host:
+      - storage.googleapis.com
+      Date:
+      - Tue, 06 Nov 2012 08:02:21 GMT
+      Content-Type:
+      - binary/octet-stream
+      Content-Length:
+      - '45'
+      X-Goog-Api-Version:
+      - 2
+      Authorization:
+      - ____SILENCED_access_token____
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
+      Vary:
+      - Origin
+      Date:
+      - Tue, 06 Nov 2012 08:02:22 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Length:
+      - '0'
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 08:02:22 GMT
+recorded_with: VCR 2.3.0
