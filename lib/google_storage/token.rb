@@ -24,6 +24,20 @@ module GoogleStorage
       return auth_url
     end
 
+    def refresh_access_token!(force = false, options={})
+      if (force || @token_expires <= Time.now)
+        options['grant_type'] = 'refresh_token'
+        response = post_request(
+            'accounts.google.com', '/o/oauth2/token', @refresh_token, options
+        )
+
+        @token_expires = Time.now + response['expires_in']
+        @token_type = response['token_type']
+        @access_token = response['access_token']
+      end
+      after_refresh_access_token(response)
+    end
+
     def acquire_refresh_token(token, options={})
       options['grant_type'] = 'authorization_code'
       response = post_request('accounts.google.com', '/o/oauth2/token', token, options)
