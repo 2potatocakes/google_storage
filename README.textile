@@ -256,6 +256,7 @@ made to the Google API itself will be picked up and this won't happen again... :
 
 h2. Contributions made by (and thanks to) the following people:
 
+Alex Wenzowski (Massive thanks!) "https://github.com/wenzowski":https://github.com/wenzowski
 Brian Armstrong
 Peter Graham
 ilyakatz
