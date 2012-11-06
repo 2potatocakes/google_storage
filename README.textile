@@ -1,4 +1,6 @@
 
+"!https://travis-ci.org/2potatocakes/google_storage.png!":https://travis-ci.org/2potatocakes/google_storage
+
 h1. Google Storage using API v2
 
 I wrote this gem to work with the newer v2 of the Google Storage API. It will run fine on all platforms and has been tested to work
