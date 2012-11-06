@@ -7,4 +7,4 @@ web_applications:
   redirect_uris: <%= ENV['GOOGLE_REDIRECT_URIS'] %>
   js_origins: <%= ENV['GOOGLE_JS_ORIGINS'] %>
 
-refresh_token: <%= ENV['GOOGLE_REFRESH_TOKEN'] || true %>
+refresh_token: <%= ENV['GOOGLE_REFRESH_TOKEN'] %>

@@ -26,9 +26,10 @@ describe GoogleStorage::Client do
   end
 
   context 'valid :config_yml' do
-    it { File.exists?('spec/support/google_storage.yml').should be_true }
+    use_vcr_cassette "setup_client"
+    it { File.exists?(GS_YML_LOCATION).should be_true }
     it { expect { 
-        subject.new(:config_yml => 'spec/support/google_storage.yml')
+        subject.new(:config_yml => GS_YML_LOCATION)
       }.to_not raise_error
     }
   end

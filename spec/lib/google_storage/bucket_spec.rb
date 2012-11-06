@@ -1,89 +1,76 @@
 require 'spec_helper'
+require 'uuid'
 
-##
-# Prep for recording new episodes:
-#
-#  1. Initialize client.
-#
-#     client = GoogleStorage::Client.new :config_yml => 'spec/support/google_storage.yml'
-#
-#  2. Recreate expected test suite state remotely.
-#
-#     client.create_bucket '7829f2c0-0476-0130-7985-0023dfa5d78c'
-#
-#     client.create_bucket '9c0a6d00-0478-0130-7986-0023dfa5d78c', :x_goog_acl => 'public-read'
-#     client.set_webcfg '9c0a6d00-0478-0130-7986-0023dfa5d78c', {'MainPageSuffix' => 'index.html', 'NotFoundPage' => '404.html'}
-#
-#     client.create_bucket '7baa01c0-04f5-0130-7987-0023dfa5d78c', :x_goog_acl => 'public-read'
-#
-# Bucket names are UUIDs (or GUIDs). Generate new ones with
-#
-#     require 'uuid'
-#     UUID.new.generate
-#
-##
+describe "GoogleStorageClient" do
 
-describe GoogleStorage::Client do
+  before(:all) do
+    VCR.use_cassette('setup_client') do
+      @client = GoogleStorage::Client.new(:config_yml => GS_YML_LOCATION)
+    end
+  end
 
-  let(:client) { 
-    GoogleStorage::Client.new :config_yml => 'spec/support/google_storage.yml'
-  }
+  before(:each) do
+    VCR.use_cassette('create_buckets', :match_requests_on => [:method, GS_BUCKET_MATCHER]) do
+      @test_bucket = "gs-test-#{UUID.new.generate(:compact)}"
+      @client.create_bucket(@test_bucket)
+    end
+  end
 
-  context '#get_webcfg' do
+  after(:each) do
+    VCR.use_cassette('cleanup_buckets', :match_requests_on => [:method, GS_BUCKET_MATCHER]) do
+      @client.delete_bucket(@test_bucket)
+    end
+  end
 
-    context 'bucket exists with no webcfg' do
-      let(:bucket_name) { '7829f2c0-0476-0130-7985-0023dfa5d78c' }
+  context "when webcfg exists" do
+    use_vcr_cassette "webcfg_exists", :match_requests_on => [:method, :host, GS_QUERY_STRING_MATCHER, :body]
 
-      subject { client.get_webcfg bucket_name }
-
-      it { subject[:success].should be_true }
-      it { subject[:bucket_name].should == bucket_name }
-      it { subject['WebsiteConfiguration'].should be_nil }
+    before(:each) do
+      @client.set_webcfg(@test_bucket, {'MainPageSuffix' => 'index.html', 'NotFoundPage' => '404.html'})
     end
 
-    context 'bucket exists with a webcfg' do 
-      let(:bucket_name) { '9c0a6d00-0478-0130-7986-0023dfa5d78c' }
+    it "get existing webcfg" do
+      resp = @client.get_webcfg(@test_bucket)
 
-      subject { client.get_webcfg bucket_name }
-
-      it { subject[:success].should be_true }
-      it { subject[:bucket_name].should == bucket_name }
-      it { subject['WebsiteConfiguration'].should ==
-        {
-          'MainPageSuffix'  =>  'index.html', 
+      resp[:success].should be_true
+      resp[:bucket_name].should == @test_bucket
+      resp[:message].should == "Website configuration retrieved"
+      resp[:config].should == {
+          'MainPageSuffix'  =>  'index.html',
           'NotFoundPage'    =>  '404.html'
-        } 
       }
+      resp.has_key?(:raw).should be_true
     end
 
+    it "clears the existing webcfg from bucket" do
+      resp = @client.set_webcfg(@test_bucket, nil)
+      resp[:success].should be_true
+      resp[:bucket_name].should == @test_bucket
+      resp[:message].should == 'Website Configuration successful'
+    end
   end
 
-  context '#set_webcfg' do
+  context "when webcfg does not exist" do
+    use_vcr_cassette "webcfg_not_exists", :match_requests_on => [:method, :host, GS_QUERY_STRING_MATCHER, :body]
 
-    context 'bucket exists with unkown webcfg' do
-      let(:bucket_name) { '7baa01c0-04f5-0130-7987-0023dfa5d78c' }
-
-      context 'client ensures correct config exists' do
-        subject { client.set_webcfg bucket_name, {
-            'MainPageSuffix'  =>  'index.html',
-            'NotFoundPage'    =>  '404.html'
-          }
-        }
-
-        it { subject[:success].should be_true }
-        it { subject[:bucket_name].should == bucket_name }
-        it { subject[:message].should == 'Website Configuration successful' }
-      end
-
-      context 'client ensures no config exists' do
-        subject { client.set_webcfg bucket_name, nil}
-
-        it { subject[:success].should be_true }
-        it { subject[:bucket_name].should == bucket_name }
-        it { subject[:message].should == 'Website Configuration successful' }
-      end
+    it "sets new webcfg for bucket" do
+      resp =  @client.set_webcfg(@test_bucket, {
+          'MainPageSuffix'  =>  'index.html',
+          'NotFoundPage'    =>  '404.html'
+        })
+      resp[:success].should be_true
+      resp[:bucket_name].should == @test_bucket
+      resp[:message].should == 'Website Configuration successful'
     end
 
+    it "webcfg should be nil as does not exist" do
+      resp = @client.get_webcfg(@test_bucket)
+      resp[:success].should be_true
+      resp[:bucket_name].should == @test_bucket
+      resp[:message].should == "Website configuration retrieved"
+      resp.has_key?(:config).should be_true
+      resp[:config].should be_nil
+      resp.has_key?(:raw).should be_true
+    end
   end
-
 end
