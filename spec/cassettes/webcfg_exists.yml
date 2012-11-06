@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://storage.googleapis.com/gs-test-32afd6500a160130fdb5005b2013754b?websiteConfig
+    uri: https://storage.googleapis.com/gs-test-bc6c0d900a360130fe4d005b2013754b?websiteConfig
     body:
       encoding: US-ASCII
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       Host:
       - storage.googleapis.com
       Date:
-      - Tue, 06 Nov 2012 08:02:16 GMT
+      - Tue, 06 Nov 2012 11:55:13 GMT
       Content-Type:
       - binary/octet-stream
       Content-Length:
@@ -37,19 +37,19 @@ http_interactions:
       Vary:
       - Origin
       Date:
-      - Tue, 06 Nov 2012 08:02:16 GMT
+      - Tue, 06 Nov 2012 11:55:14 GMT
       Expires:
-      - Tue, 06 Nov 2012 08:02:16 GMT
+      - Tue, 06 Nov 2012 11:55:14 GMT
       Cache-Control:
       - private, max-age=0
     body:
       encoding: US-ASCII
       string: <?xml version='1.0' encoding='UTF-8'?><WebsiteConfiguration><MainPageSuffix>index.html</MainPageSuffix><NotFoundPage>404.html</NotFoundPage></WebsiteConfiguration>
     http_version: !!null 
-  recorded_at: Tue, 06 Nov 2012 08:02:16 GMT
+  recorded_at: Tue, 06 Nov 2012 11:55:14 GMT
 - request:
     method: put
-    uri: https://storage.googleapis.com/gs-test-3585ec400a160130fdb6005b2013754b?websiteConfig
+    uri: https://storage.googleapis.com/gs-test-c130d3700a360130fe4f005b2013754b?websiteConfig
     body:
       encoding: US-ASCII
       string: <WebsiteConfiguration><MainPageSuffix>index.html</MainPageSuffix><NotFoundPage>404.html</NotFoundPage></WebsiteConfiguration>
@@ -61,7 +61,7 @@ http_interactions:
       Host:
       - storage.googleapis.com
       Date:
-      - Tue, 06 Nov 2012 08:02:20 GMT
+      - Tue, 06 Nov 2012 11:55:19 GMT
       Content-Type:
       - binary/octet-stream
       Content-Length:
@@ -80,7 +80,7 @@ http_interactions:
       Vary:
       - Origin
       Date:
-      - Tue, 06 Nov 2012 08:02:21 GMT
+      - Tue, 06 Nov 2012 11:55:20 GMT
       Pragma:
       - no-cache
       Expires:
@@ -95,10 +95,10 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     http_version: !!null 
-  recorded_at: Tue, 06 Nov 2012 08:02:21 GMT
+  recorded_at: Tue, 06 Nov 2012 11:55:21 GMT
 - request:
     method: put
-    uri: https://storage.googleapis.com/gs-test-3585ec400a160130fdb6005b2013754b?websiteConfig
+    uri: https://storage.googleapis.com/gs-test-c130d3700a360130fe4f005b2013754b?websiteConfig
     body:
       encoding: US-ASCII
       string: <WebsiteConfiguration></WebsiteConfiguration>
@@ -110,7 +110,7 @@ http_interactions:
       Host:
       - storage.googleapis.com
       Date:
-      - Tue, 06 Nov 2012 08:02:21 GMT
+      - Tue, 06 Nov 2012 11:55:21 GMT
       Content-Type:
       - binary/octet-stream
       Content-Length:
@@ -129,7 +129,7 @@ http_interactions:
       Vary:
       - Origin
       Date:
-      - Tue, 06 Nov 2012 08:02:22 GMT
+      - Tue, 06 Nov 2012 11:55:23 GMT
       Pragma:
       - no-cache
       Expires:
@@ -144,5 +144,5 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     http_version: !!null 
-  recorded_at: Tue, 06 Nov 2012 08:02:22 GMT
+  recorded_at: Tue, 06 Nov 2012 11:55:23 GMT
 recorded_with: VCR 2.3.0

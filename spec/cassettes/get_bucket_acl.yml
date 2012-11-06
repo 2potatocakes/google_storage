@@ -1,50 +1,53 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: get
-    uri: https://gs-test-c013b6600a140130fd6e005b2013754b.storage.googleapis.com/?acl
-    body: 
+    uri: https://gs-test-930e75400a360130fe47005b2013754b.storage.googleapis.com/?acl
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Accept: 
-      - "*/*"
-      User-Agent: 
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
       - Ruby
-      Host: 
-      - gs-test-c013b6600a140130fd6e005b2013754b.storage.googleapis.com
-      Date: 
-      - Tue, 06 Nov 2012 07:51:54 GMT
-      Content-Type: 
+      Host:
+      - gs-test-930e75400a360130fe47005b2013754b.storage.googleapis.com
+      Date:
+      - Tue, 06 Nov 2012 11:54:02 GMT
+      Content-Type:
       - binary/octet-stream
-      Content-Length: 
-      - "0"
-      X-Goog-Api-Version: 
+      Content-Length:
+      - '0'
+      X-Goog-Api-Version:
       - 2
-      Authorization: 
+      Authorization:
       - ____SILENCED_access_token____
-  response: 
-    status: 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Server: 
+    headers:
+      Server:
       - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
-      Content-Type: 
+      Content-Type:
       - application/xml; charset=UTF-8
-      Content-Length: 
-      - "647"
-      Vary: 
+      Content-Length:
+      - '647'
+      Vary:
       - Origin
-      Date: 
-      - Tue, 06 Nov 2012 07:51:54 GMT
-      Expires: 
-      - Tue, 06 Nov 2012 07:51:54 GMT
-      Cache-Control: 
+      Date:
+      - Tue, 06 Nov 2012 11:54:03 GMT
+      Expires:
+      - Tue, 06 Nov 2012 11:54:03 GMT
+      Cache-Control:
       - private, max-age=0
-    body: 
+    body:
       encoding: US-ASCII
-      string: <?xml version='1.0' encoding='UTF-8'?><AccessControlList><Owner><ID>00b4903a9774df5a708ab94aefd8092f04c2ff2d02023e7d115cdef2af02e2e4</ID></Owner><Entries><Entry><Scope type='GroupById'><ID>00b4903a9774df5a708ab94aefd8092f04c2ff2d02023e7d115cdef2af02e2e4</ID></Scope><Permission>FULL_CONTROL</Permission></Entry><Entry><Scope type='GroupById'><ID>00b4903a974ce26bac0a77f5182e1801d086f4eeca828831f8e305185ab3817d</ID></Scope><Permission>FULL_CONTROL</Permission></Entry><Entry><Scope type='GroupById'><ID>00b4903a97b8c1285358dbdfaa80cb702e767a4d90a76b0b2832521a9b1f62d2</ID></Scope><Permission>READ</Permission></Entry></Entries></AccessControlList>
-    http_version: 
-  recorded_at: Tue, 06 Nov 2012 07:51:54 GMT
+      string: <?xml version='1.0' encoding='UTF-8'?><AccessControlList><Owner><ID>____SILENCED_google_project_id____</ID></Owner><Entries><Entry><Scope
+        type='GroupById'><ID>____SILENCED_google_project_id____</ID></Scope><Permission>FULL_CONTROL</Permission></Entry><Entry><Scope
+        type='GroupById'><ID>____SILENCED_google_project_id____</ID></Scope><Permission>FULL_CONTROL</Permission></Entry><Entry><Scope
+        type='GroupById'><ID>____SILENCED_google_project_id____</ID></Scope><Permission>READ</Permission></Entry></Entries></AccessControlList>
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 11:54:03 GMT
 recorded_with: VCR 2.3.0

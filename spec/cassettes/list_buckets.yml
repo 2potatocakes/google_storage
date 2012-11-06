@@ -1,52 +1,52 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: get
     uri: https://storage.googleapis.com/
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Accept: 
-      - "*/*"
-      User-Agent: 
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
       - Ruby
-      Host: 
+      Host:
       - storage.googleapis.com
-      Date: 
-      - Tue, 06 Nov 2012 07:52:02 GMT
-      Content-Type: 
+      Date:
+      - Tue, 06 Nov 2012 11:54:17 GMT
+      Content-Type:
       - binary/octet-stream
-      Content-Length: 
-      - "0"
-      X-Goog-Api-Version: 
+      Content-Length:
+      - '0'
+      X-Goog-Api-Version:
       - 2
-      X-Goog-Project-Id: 
+      X-Goog-Project-Id:
       - ____SILENCED_x-goog-project-id____
-      Authorization: 
+      Authorization:
       - ____SILENCED_access_token____
-  response: 
-    status: 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Server: 
+    headers:
+      Server:
       - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
-      Content-Type: 
+      Content-Type:
       - application/xml; charset=UTF-8
-      Content-Length: 
-      - "336"
-      Vary: 
+      Content-Length:
+      - '705'
+      Vary:
       - Origin
-      Date: 
-      - Tue, 06 Nov 2012 07:52:02 GMT
-      Expires: 
-      - Tue, 06 Nov 2012 07:52:02 GMT
-      Cache-Control: 
+      Date:
+      - Tue, 06 Nov 2012 11:54:18 GMT
+      Expires:
+      - Tue, 06 Nov 2012 11:54:18 GMT
+      Cache-Control:
       - private, max-age=0
-    body: 
+    body:
       encoding: US-ASCII
-      string: <?xml version='1.0' encoding='UTF-8'?><ListAllMyBucketsResult xmlns='http://doc.s3.amazonaws.com/2006-03-01'><Owner><ID>00b4903a9774df5a708ab94aefd8092f04c2ff2d02023e7d115cdef2af02e2e4</ID></Owner><Buckets><Bucket><Name>lucas_bucket</Name><CreationDate>2012-09-30T10:31:55.658Z</CreationDate></Bucket></Buckets></ListAllMyBucketsResult>
-    http_version: 
-  recorded_at: Tue, 06 Nov 2012 07:52:02 GMT
+      string: <?xml version='1.0' encoding='UTF-8'?><ListAllMyBucketsResult xmlns='http://doc.s3.amazonaws.com/2006-03-01'><Owner><ID>____SILENCED_google_project_id____</ID></Owner><Buckets><Bucket><Name>gs-test-86ec22600a2b0130fe45005b2013754b</Name><CreationDate>2012-11-06T10:35:02.434Z</CreationDate></Bucket><Bucket><Name>gs-test-8f8ce8400a2f0130fe59005b2013754b</Name><CreationDate>2012-11-06T11:03:52.938Z</CreationDate></Bucket><Bucket><Name>gs-test-a7d819e00a2b0130fe51005b2013754b</Name><CreationDate>2012-11-06T10:35:56.917Z</CreationDate></Bucket><Bucket><Name>lucas_bucket</Name><CreationDate>2012-09-30T10:31:55.658Z</CreationDate></Bucket></Buckets></ListAllMyBucketsResult>
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 11:54:18 GMT
 recorded_with: VCR 2.3.0

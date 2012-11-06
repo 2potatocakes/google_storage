@@ -1,130 +1,132 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: get
-    uri: http://gs-test-b5633b900a140130fd68005b2013754b.storage.googleapis.com/
-    body: 
+    uri: http://gs-test-7fa107800a360130fe41005b2013754b.storage.googleapis.com/
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Accept: 
-      - "*/*"
-      User-Agent: 
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
       - Ruby
-  response: 
-    status: 
+  response:
+    status:
       code: 403
       message: Forbidden
-    headers: 
-      Server: 
+    headers:
+      Server:
       - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
-      Vary: 
+      Vary:
       - Origin
-      Content-Type: 
+      Content-Type:
       - application/xml; charset=UTF-8
-      Content-Length: 
-      - "111"
-      Date: 
-      - Tue, 06 Nov 2012 07:51:36 GMT
-      Expires: 
-      - Tue, 06 Nov 2012 07:51:36 GMT
-      Cache-Control: 
+      Content-Length:
+      - '111'
+      Date:
+      - Tue, 06 Nov 2012 11:53:30 GMT
+      Expires:
+      - Tue, 06 Nov 2012 11:53:30 GMT
+      Cache-Control:
       - private, max-age=0
-    body: 
+    body:
       encoding: US-ASCII
-      string: <?xml version='1.0' encoding='UTF-8'?><Error><Code>AccessDenied</Code><Message>Access denied.</Message></Error>
-    http_version: 
-  recorded_at: Tue, 06 Nov 2012 07:51:36 GMT
-- request: 
+      string: <?xml version='1.0' encoding='UTF-8'?><Error><Code>AccessDenied</Code><Message>Access
+        denied.</Message></Error>
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 11:53:31 GMT
+- request:
     method: delete
-    uri: https://gs-test-b5633b900a140130fd68005b2013754b.storage.googleapis.com/
-    body: 
+    uri: https://gs-test-7fa107800a360130fe41005b2013754b.storage.googleapis.com/
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Accept: 
-      - "*/*"
-      User-Agent: 
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
       - Ruby
-      Host: 
-      - gs-test-b5633b900a140130fd68005b2013754b.storage.googleapis.com
-      Date: 
-      - Tue, 06 Nov 2012 07:51:36 GMT
-      Content-Type: 
+      Host:
+      - gs-test-7fa107800a360130fe41005b2013754b.storage.googleapis.com
+      Date:
+      - Tue, 06 Nov 2012 11:53:31 GMT
+      Content-Type:
       - binary/octet-stream
-      Content-Length: 
-      - "0"
-      X-Goog-Api-Version: 
+      Content-Length:
+      - '0'
+      X-Goog-Api-Version:
       - 2
-      Authorization: 
+      Authorization:
       - ____SILENCED_access_token____
-  response: 
-    status: 
+  response:
+    status:
       code: 204
       message: No Content
-    headers: 
-      Server: 
+    headers:
+      Server:
       - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
-      Vary: 
+      Vary:
       - Origin
-      Date: 
-      - Tue, 06 Nov 2012 07:51:37 GMT
-      Expires: 
-      - Tue, 06 Nov 2012 07:51:37 GMT
-      Cache-Control: 
+      Date:
+      - Tue, 06 Nov 2012 11:53:32 GMT
+      Expires:
+      - Tue, 06 Nov 2012 11:53:32 GMT
+      Cache-Control:
       - private, max-age=0
-      Content-Length: 
-      - "0"
-    body: 
+      Content-Length:
+      - '0'
+    body:
       encoding: US-ASCII
-      string: ""
-    http_version: 
-  recorded_at: Tue, 06 Nov 2012 07:51:37 GMT
-- request: 
+      string: ''
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 11:53:33 GMT
+- request:
     method: get
-    uri: https://gs-test-b5633b900a140130fd68005b2013754b.storage.googleapis.com/
-    body: 
+    uri: https://gs-test-7fa107800a360130fe41005b2013754b.storage.googleapis.com/
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Accept: 
-      - "*/*"
-      User-Agent: 
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
       - Ruby
-      Host: 
-      - gs-test-b5633b900a140130fd68005b2013754b.storage.googleapis.com
-      Date: 
-      - Tue, 06 Nov 2012 07:51:37 GMT
-      Content-Type: 
+      Host:
+      - gs-test-7fa107800a360130fe41005b2013754b.storage.googleapis.com
+      Date:
+      - Tue, 06 Nov 2012 11:53:33 GMT
+      Content-Type:
       - binary/octet-stream
-      Content-Length: 
-      - "0"
-      X-Goog-Api-Version: 
+      Content-Length:
+      - '0'
+      X-Goog-Api-Version:
       - 2
-      Authorization: 
+      Authorization:
       - ____SILENCED_access_token____
-  response: 
-    status: 
+  response:
+    status:
       code: 404
       message: Not Found
-    headers: 
-      Server: 
+    headers:
+      Server:
       - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
-      Vary: 
+      Vary:
       - Origin
-      Content-Type: 
+      Content-Type:
       - application/xml; charset=UTF-8
-      Content-Length: 
-      - "133"
-      Date: 
-      - Tue, 06 Nov 2012 07:51:37 GMT
-      Expires: 
-      - Tue, 06 Nov 2012 07:51:37 GMT
-      Cache-Control: 
+      Content-Length:
+      - '133'
+      Date:
+      - Tue, 06 Nov 2012 11:53:34 GMT
+      Expires:
+      - Tue, 06 Nov 2012 11:53:34 GMT
+      Cache-Control:
       - private, max-age=0
-    body: 
+    body:
       encoding: US-ASCII
-      string: <?xml version='1.0' encoding='UTF-8'?><Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist.</Message></Error>
-    http_version: 
-  recorded_at: Tue, 06 Nov 2012 07:51:37 GMT
+      string: <?xml version='1.0' encoding='UTF-8'?><Error><Code>NoSuchBucket</Code><Message>The
+        specified bucket does not exist.</Message></Error>
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 11:53:34 GMT
 recorded_with: VCR 2.3.0

@@ -1,101 +1,103 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: get
-    uri: https://gs-test-bbeed0b00a140130fd6c005b2013754b.storage.googleapis.com/
-    body: 
+    uri: https://gs-test-8ceefc500a360130fe45005b2013754b.storage.googleapis.com/
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Accept: 
-      - "*/*"
-      User-Agent: 
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
       - Ruby
-      Host: 
-      - gs-test-bbeed0b00a140130fd6c005b2013754b.storage.googleapis.com
-      Date: 
-      - Tue, 06 Nov 2012 07:51:46 GMT
-      Content-Type: 
+      Host:
+      - gs-test-8ceefc500a360130fe45005b2013754b.storage.googleapis.com
+      Date:
+      - Tue, 06 Nov 2012 11:53:52 GMT
+      Content-Type:
       - binary/octet-stream
-      Content-Length: 
-      - "0"
-      X-Goog-Api-Version: 
+      Content-Length:
+      - '0'
+      X-Goog-Api-Version:
       - 2
-      Authorization: 
+      Authorization:
       - ____SILENCED_access_token____
-  response: 
-    status: 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Server: 
+    headers:
+      Server:
       - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
-      Content-Type: 
+      Content-Type:
       - application/xml; charset=UTF-8
-      Content-Length: 
-      - "241"
-      Vary: 
+      Content-Length:
+      - '241'
+      Vary:
       - Origin
-      Date: 
-      - Tue, 06 Nov 2012 07:51:46 GMT
-      Expires: 
-      - Tue, 06 Nov 2012 07:51:46 GMT
-      Cache-Control: 
+      Date:
+      - Tue, 06 Nov 2012 11:53:53 GMT
+      Expires:
+      - Tue, 06 Nov 2012 11:53:53 GMT
+      Cache-Control:
       - private, max-age=0
-    body: 
+    body:
       encoding: US-ASCII
-      string: <?xml version='1.0' encoding='UTF-8'?><ListBucketResult xmlns='http://doc.s3.amazonaws.com/2006-03-01'><Name>gs-test-bbeed0b00a140130fd6c005b2013754b</Name><Prefix></Prefix><Marker></Marker><IsTruncated>false</IsTruncated></ListBucketResult>
-    http_version: 
-  recorded_at: Tue, 06 Nov 2012 07:51:47 GMT
-- request: 
+      string: <?xml version='1.0' encoding='UTF-8'?><ListBucketResult xmlns='http://doc.s3.amazonaws.com/2006-03-01'><Name>gs-test-8ceefc500a360130fe45005b2013754b</Name><Prefix></Prefix><Marker></Marker><IsTruncated>false</IsTruncated></ListBucketResult>
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 11:53:54 GMT
+- request:
     method: put
-    uri: https://gs-test-bbeed0b00a140130fd6c005b2013754b.storage.googleapis.com/
-    body: 
+    uri: https://gs-test-8ceefc500a360130fe45005b2013754b.storage.googleapis.com/
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Accept: 
-      - "*/*"
-      User-Agent: 
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
       - Ruby
-      Host: 
-      - gs-test-bbeed0b00a140130fd6c005b2013754b.storage.googleapis.com
-      Date: 
-      - Tue, 06 Nov 2012 07:51:47 GMT
-      Content-Type: 
+      Host:
+      - gs-test-8ceefc500a360130fe45005b2013754b.storage.googleapis.com
+      Date:
+      - Tue, 06 Nov 2012 11:53:54 GMT
+      Content-Type:
       - binary/octet-stream
-      Content-Length: 
-      - "0"
-      X-Goog-Api-Version: 
+      Content-Length:
+      - '0'
+      X-Goog-Api-Version:
       - 2
-      X-Goog-Project-Id: 
+      X-Goog-Project-Id:
       - ____SILENCED_x-goog-project-id____
-      Authorization: 
+      Authorization:
       - ____SILENCED_access_token____
-  response: 
-    status: 
+  response:
+    status:
       code: 409
       message: Conflict
-    headers: 
-      Server: 
+    headers:
+      Server:
       - HTTP Upload Server Built on Oct 3 2012 16:52:30 (1349308350)
-      Vary: 
+      Vary:
       - Origin
-      Content-Type: 
+      Content-Type:
       - application/xml; charset=UTF-8
-      Content-Length: 
-      - "190"
-      Date: 
-      - Tue, 06 Nov 2012 07:51:47 GMT
-      Pragma: 
+      Content-Length:
+      - '190'
+      Date:
+      - Tue, 06 Nov 2012 11:53:55 GMT
+      Pragma:
       - no-cache
-      Expires: 
+      Expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
-      Cache-Control: 
+      Cache-Control:
       - no-cache, no-store, must-revalidate
-    body: 
+    body:
       encoding: US-ASCII
-      string: <?xml version='1.0' encoding='UTF-8'?><Error><Code>BucketAlreadyOwnedByYou</Code><Message>Your previous request to create the named bucket succeeded and you already own it.</Message></Error>
-    http_version: 
-  recorded_at: Tue, 06 Nov 2012 07:51:47 GMT
+      string: <?xml version='1.0' encoding='UTF-8'?><Error><Code>BucketAlreadyOwnedByYou</Code><Message>Your
+        previous request to create the named bucket succeeded and you already own
+        it.</Message></Error>
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 11:53:56 GMT
 recorded_with: VCR 2.3.0

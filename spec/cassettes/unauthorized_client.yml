@@ -1,57 +1,53 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: post
     uri: https://accounts.google.com/o/oauth2/token
-    body: 
+    body:
       encoding: US-ASCII
       string: client_id=____SILENCED_x-goog-project-id____.apps.googleusercontent.com&client_secret=____SILENCED_client_secret____&grant_type=refresh_token&refresh_token=____SILENCED_refresh_token____
-    headers: 
-      Host: 
+    headers:
+      Host:
       - accounts.google.com
-      Date: 
-      - Tue, 06 Nov 2012 07:52:03 GMT
-      Content-Type: 
+      Date:
+      - Tue, 06 Nov 2012 11:54:20 GMT
+      Content-Type:
       - application/x-www-form-urlencoded
-      Content-Length: 
-      - "0"
-      Accept: 
-      - "*/*"
-      User-Agent: 
+      Content-Length:
+      - '0'
+      Accept:
+      - ! '*/*'
+      User-Agent:
       - Ruby
-  response: 
-    status: 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Cache-Control: 
+    headers:
+      Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Pragma: 
+      Pragma:
       - no-cache
-      Expires: 
+      Expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
-      Date: 
-      - Tue, 06 Nov 2012 07:52:04 GMT
-      Content-Type: 
+      Date:
+      - Tue, 06 Nov 2012 11:54:21 GMT
+      Content-Type:
       - application/json
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Frame-Options: 
+      X-Frame-Options:
       - SAMEORIGIN
-      X-Xss-Protection: 
+      X-Xss-Protection:
       - 1; mode=block
-      Server: 
+      Server:
       - GSE
-      Transfer-Encoding: 
+      Transfer-Encoding:
       - chunked
-    body: 
+    body:
       encoding: US-ASCII
-      string: |-
-        {
-          "access_token" : "____SILENCED_access_token____",
-          "token_type" : "Bearer",
-          "expires_in" : 3600
-        }
-    http_version: 
-  recorded_at: Tue, 06 Nov 2012 07:52:04 GMT
+      string: ! "{\n  \"access_token\" : \"____SILENCED_access_token____\",\n  \"token_type\"
+        : \"Bearer\",\n  \"expires_in\" : 3600\n}"
+    http_version: !!null 
+  recorded_at: Tue, 06 Nov 2012 11:54:22 GMT
 recorded_with: VCR 2.3.0

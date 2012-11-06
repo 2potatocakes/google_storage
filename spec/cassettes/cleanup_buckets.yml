@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://gs-test-3b0eb0d00a160130fdba005b2013754b.storage.googleapis.com/
+    uri: https://gs-test-cc2f2a600a360130fe53005b2013754b.storage.googleapis.com/
     body:
       encoding: US-ASCII
       string: ''
@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - gs-test-3b0eb0d00a160130fdba005b2013754b.storage.googleapis.com
+      - gs-test-cc2f2a600a360130fe53005b2013754b.storage.googleapis.com
       Date:
-      - Tue, 06 Nov 2012 08:02:30 GMT
+      - Tue, 06 Nov 2012 11:55:39 GMT
       Content-Type:
       - binary/octet-stream
       Content-Length:
@@ -33,9 +33,9 @@ http_interactions:
       Vary:
       - Origin
       Date:
-      - Tue, 06 Nov 2012 08:02:31 GMT
+      - Tue, 06 Nov 2012 11:55:41 GMT
       Expires:
-      - Tue, 06 Nov 2012 08:02:31 GMT
+      - Tue, 06 Nov 2012 11:55:41 GMT
       Cache-Control:
       - private, max-age=0
       Content-Length:
@@ -44,5 +44,5 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     http_version: !!null 
-  recorded_at: Tue, 06 Nov 2012 08:02:31 GMT
+  recorded_at: Tue, 06 Nov 2012 11:55:41 GMT
 recorded_with: VCR 2.3.0
