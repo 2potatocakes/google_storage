@@ -1,4 +1,3 @@
-# @encoding utf-8
 
 h1. Google Storage using API v2
 

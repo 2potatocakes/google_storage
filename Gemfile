@@ -6,13 +6,15 @@ gemspec
 gem 'jruby-openssl', :platforms => :jruby
 
 group :test, :development do
+  gem 'rake', '0.8.7'
   gem 'rspec'
   gem 'simplecov'
-  gem 'fakeweb'
+  gem 'webmock'
   gem 'vcr'
 end
 
 group :development do
+  gem 'rdoc'
   gem 'yard'
   gem 'RedCloth'
 

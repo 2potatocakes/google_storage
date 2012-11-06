@@ -12,6 +12,7 @@ rvm:
   - ree
 script:
   - bundle exec rspec
+  - bundle exec rake test
 matrix:
   allow_failures:
     - rvm: ruby-head

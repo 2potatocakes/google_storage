@@ -7,24 +7,15 @@
 
 require 'google_storage'
 require 'simplecov'
-require 'fakeweb'
+require 'webmock'
 require 'vcr'
 
-require File.expand_path('../support/secret_data', __FILE__)
-require File.expand_path('../support/monkeypatch_silence_access_token', __FILE__)
-
+require File.expand_path('support/shared_test_config', File.dirname(__FILE__))
 
 SimpleCov.start
 
 VCR.configure do |c|
-  c.cassette_library_dir = 'spec/cassettes'
-  c.hook_into :fakeweb
-  c.default_cassette_options = { :record => :none }
   c.configure_rspec_metadata!
-  SecretData.new.silence! do |find, replace|
-    # https://www.relishapp.com/myronmarston/vcr/docs/configuration/filter-sensitive-data
-    c.filter_sensitive_data(replace) { find }
-  end
 end
 
 RSpec.configure do |config|
@@ -37,15 +28,5 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
-
-  # Add VCR to all tests
-  config.around(:each) do |example|
-    options = example.metadata[:vcr] || {}
-    if options[:record] == :skip 
-      VCR.turned_off(&example)
-    else
-      name = example.metadata[:full_description].split(/\s+/, 2).join("/").gsub!(/(.)([A-Z])/,'\1_\2').downcase!.gsub(/[^\w\/]+/, "_")
-      VCR.use_cassette(name, options, &example)
-    end
-  end
+  config.extend VCR::RSpec::Macros
 end
