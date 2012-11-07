@@ -6,6 +6,7 @@ gemspec
 gem 'jruby-openssl', :platforms => :jruby
 
 group :test, :development do
+  gem 'uuid'
   gem 'rake', '0.8.7'
   gem 'rspec'
   gem 'simplecov'
