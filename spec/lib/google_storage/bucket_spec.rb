@@ -23,7 +23,7 @@ describe "GoogleStorageClient" do
   end
 
   context "when webcfg exists" do
-    use_vcr_cassette "webcfg_exists", :match_requests_on => [:method, :host, GS_QUERY_STRING_MATCHER, :body]
+    use_vcr_cassette "webcfg_exists", :match_requests_on => [:method, :host, :body]
 
     before(:each) do
       @client.set_webcfg(@test_bucket, {'MainPageSuffix' => 'index.html', 'NotFoundPage' => '404.html'})
