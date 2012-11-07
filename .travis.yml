@@ -1,5 +1,5 @@
 language: ruby
-bundler_args: --without development
+bundler_args: --without development darwin linux
 rvm:
   - 1.9.3
   - 1.9.2

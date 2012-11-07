@@ -19,6 +19,7 @@ group :development do
   gem 'yard'
   gem 'RedCloth'
 
+  gem 'guard-test'
   gem 'guard-rspec'
   gem 'guard-bundler'
 
@@ -26,6 +27,4 @@ group :development do
   gem 'rb-fsevent', :require => false, :group => :darwin              # OSX
   gem 'rb-inotify', :require => false, :group => :linux               # Linux
   gem 'wdm',        :require => false, :platforms => [:mswin, :mingw] # Windows
-
-  gem 'uuid'
 end
