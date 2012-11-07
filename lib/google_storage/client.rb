@@ -68,7 +68,7 @@ module GoogleStorage
 
       raise_missing_yml_error unless config_path && File.exists?(config_path)
 
-      config_yml = YAML::load(File.open(config_path))
+      config_yml = YAML.load(ERB.new(IO.read(config_path)).result)
 
       @project_id     = config_yml['google_config']['x-goog-project-id'].to_s #must be a string
 
